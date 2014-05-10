@@ -191,6 +191,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\fonts\28_days_later-webfont.svg" />
+    <Content Include="Content\fonts\champagne__limousines-webfont.svg" />
+    <Content Include="Content\fonts\marcellus.regular-webfont.svg" />
+    <Content Include="Content\fonts\opensans-light-webfont.svg" />
+    <Content Include="Content\Site-backup.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -247,6 +252,18 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Content\fonts\28_days_later-webfont.eot" />
+    <Content Include="Content\fonts\28_days_later-webfont.ttf" />
+    <Content Include="Content\fonts\28_days_later-webfont.woff" />
+    <Content Include="Content\fonts\marcellus.regular-webfont.eot" />
+    <Content Include="Content\fonts\marcellus.regular-webfont.ttf" />
+    <Content Include="Content\fonts\marcellus.regular-webfont.woff" />
+    <Content Include="Content\fonts\opensans-light-webfont.eot" />
+    <Content Include="Content\fonts\opensans-light-webfont.ttf" />
+    <Content Include="Content\fonts\opensans-light-webfont.woff" />
+    <Content Include="Content\fonts\champagne__limousines-webfont.eot" />
+    <Content Include="Content\fonts\champagne__limousines-webfont.ttf" />
+    <Content Include="Content\fonts\champagne__limousines-webfont.woff" />
     <None Include="Properties\PublishProfiles\Release.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
