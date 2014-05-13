@@ -2,3 +2,38 @@
     ViewBag.Title = "Home Page";
 }
 
+@section styles 
+{
+    <link href="~/Content/flexslider/flexslider.css" rel="stylesheet" />
+}
+
+@section slider
+{
+    <div class="slider-wrap fullwidthbanner-container">
+        <div class="flexslider no-border">
+            <ul class="slides">
+                <li>
+                    <img src="~/Images/slider1.jpg" />
+                </li>
+                <li>
+                    <img src="~/Images/slider2.jpg" />
+                </li>
+            </ul>
+        </div>
+    </div>    
+}
+<div class="full-container">
+    
+</div>
+
+@section scripts
+{
+    <script src="~/Scripts/flexslider/jquery.flexslider-min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.flexslider').flexslider({
+                animation: "slide"
+            });
+        });
+    </script>
+}

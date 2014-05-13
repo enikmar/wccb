@@ -31,7 +31,13 @@
                                 <li>@Html.ActionLink("Constitution", "About", "Home")</li>
                             </ul>
                         </li>
-                        <li>@Html.ActionLink("Youth", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Youth", "Contact", "Home")
+                            <ul>
+                                <li>@Html.ActionLink("Open Band","About", "Home")</li>
+                                <li>@Html.ActionLink("Honour Band","About", "Home")</li>
+                                <li>@Html.ActionLink("Academy","About", "Home")</li>
+                            </ul>
+                        </li>
                         <li>@Html.ActionLink("Events", "Contact", "Home")</li>
                         <li>@Html.ActionLink("News", "Contact", "Home")</li>
                         <li>@Html.ActionLink("Gallery", "Contact", "Home")</li>
@@ -41,6 +47,7 @@
             </div>
         </div>
     </header>
+    @RenderSection("slider", required: false)
     <div id="body">
         @RenderSection("featured", required: false)
         <section class="content-wrapper main-content clear-fix">

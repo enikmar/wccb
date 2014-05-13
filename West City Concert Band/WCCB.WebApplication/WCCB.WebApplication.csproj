@@ -191,6 +191,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\flexslider\flexslider.css" />
+    <Content Include="Content\flexslider\fonts\flexslider-icon.svg" />
+    <Content Include="Content\flexslider\images\bg_direction_nav.png" />
+    <Content Include="Content\flexslider\images\bg_play_pause.png" />
     <Content Include="Content\fonts\28_days_later-webfont.svg" />
     <Content Include="Content\fonts\champagne__limousines-webfont.svg" />
     <Content Include="Content\fonts\marcellus.regular-webfont.svg" />
@@ -266,9 +270,15 @@
     <Content Include="Content\fonts\champagne__limousines-webfont.eot" />
     <Content Include="Content\fonts\champagne__limousines-webfont.ttf" />
     <Content Include="Content\fonts\champagne__limousines-webfont.woff" />
+    <Content Include="Content\flexslider\fonts\flexslider-icon.eot" />
+    <Content Include="Content\flexslider\fonts\flexslider-icon.ttf" />
+    <Content Include="Content\flexslider\fonts\flexslider-icon.woff" />
     <None Include="Properties\PublishProfiles\Release.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Images\slider1.jpg" />
+    <Content Include="Images\slider2.jpg" />
     <Content Include="Images\wccb.png" />
+    <Content Include="Scripts\flexslider\jquery.flexslider-min.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
