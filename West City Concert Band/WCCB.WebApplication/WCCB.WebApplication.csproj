@@ -340,6 +340,16 @@
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WCCB.DataLayer\WCCB.DataLayer.csproj">
+      <Project>{ce1039da-bafe-47c0-a29b-24f44e291494}</Project>
+      <Name>WCCB.DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WCCB.EntityFramework\WCCB.Models.csproj">
+      <Project>{03d2297c-0df7-46a1-ab4c-71c7c7883219}</Project>
+      <Name>WCCB.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

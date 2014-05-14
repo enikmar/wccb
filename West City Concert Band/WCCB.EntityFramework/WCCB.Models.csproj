@@ -7,8 +7,8 @@
     <ProjectGuid>{03D2297C-0DF7-46A1-AB4C-71C7C7883219}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WCCB.EntityFramework</RootNamespace>
-    <AssemblyName>WCCB.EntityFramework</AssemblyName>
+    <RootNamespace>WCCB.Models</RootNamespace>
+    <AssemblyName>WCCB.Models</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
