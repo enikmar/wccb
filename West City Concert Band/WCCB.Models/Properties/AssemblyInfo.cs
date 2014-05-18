@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("WCCB.DataLayer")]
+[assembly: AssemblyTitle("WCCB.Models")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("WCCB.DataLayer")]
+[assembly: AssemblyProduct("WCCB.Models")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("4eb3e2be-f9b0-42a4-ba91-955dd60a8da1")]
+[assembly: Guid("356e2277-a08c-4214-9920-ccc6141efa51")]
 
 // Version information for an assembly consists of the following four values:
 //

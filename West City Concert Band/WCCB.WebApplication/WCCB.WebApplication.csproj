@@ -39,6 +39,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -60,9 +64,6 @@
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -294,7 +295,9 @@
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\lightbox\lightbox-2.6.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -342,12 +345,8 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WCCB.DataLayer\WCCB.DataLayer.csproj">
-      <Project>{ce1039da-bafe-47c0-a29b-24f44e291494}</Project>
+      <Project>{a172a852-87ca-4b2c-8b73-7a30690639cb}</Project>
       <Name>WCCB.DataLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WCCB.EntityFramework\WCCB.Models.csproj">
-      <Project>{03d2297c-0df7-46a1-ab4c-71c7c7883219}</Project>
-      <Name>WCCB.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
