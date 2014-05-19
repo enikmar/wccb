@@ -22,5 +22,11 @@ namespace WCCB.DataLayer.Repositories
             var hashedPassword = user.Password;
             return Crypto.VerifyHashedPassword(hashedPassword, password);
         }
+
+        public User GetUserByUsername(string username)
+        {
+            var users = Get(user => user.Username == username).ToList();
+            return users.Any() ? users.First() : null;
+        }
     }
 }

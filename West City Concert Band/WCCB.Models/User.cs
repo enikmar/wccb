@@ -1,25 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Security;
 
 namespace WCCB.Models
 {
-    [Table("wccb.Users")]
+    [Table("wccb_Users")]
     public class User
     {
-        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid Id { get; set; }
-
-        [MaxLength(450)]
-        //[Index("UsernameIndex", IsUnique = true)]
+        public Guid UserId { get; set; }
         public string Username { get; set; }
-
         public string Password { get; set; }
+        public ICollection<Role> Roles { get; set; } 
+
+        public User()
+        {
+            Roles = new HashSet<Role>();
+        }
     }
 }

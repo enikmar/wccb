@@ -10,5 +10,6 @@ namespace WCCB.DataLayer.Repositories.Interfaces
     public interface IUserRepository : IGenericRepository<User>
     {
         bool CheckPassword(Guid id, string password);
+        User GetUserByUsername(string username);
     }
 }

@@ -14,11 +14,10 @@ using WCCB.WebApplication.Models;
 namespace WCCB.WebApplication.Controllers
 {
     [Authorize]
-    [InitializeSimpleMembership]
+    //[InitializeSimpleMembership]
     public class AccountController : Controller
     {
-        //
-        // GET: /Account/Login
+        #region Logn
 
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
@@ -26,9 +25,6 @@ namespace WCCB.WebApplication.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
-
-        //
-        // POST: /Account/Login
 
         [HttpPost]
         [AllowAnonymous]
@@ -44,6 +40,8 @@ namespace WCCB.WebApplication.Controllers
             ModelState.AddModelError("", "The user name or password provided is incorrect.");
             return View(model);
         }
+
+        #endregion
 
         //
         // POST: /Account/LogOff

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,20 +16,29 @@ namespace WCCB.DataLayer
     {
         public WccbContextInitializer()
         {
-            //this.Seed(new WccbContext());
+            this.Seed(new WccbContext());
         }
 
         protected override void Seed(WccbContext context)
         {
-            //base.Seed(context);
-            //context.Users.Add(
-            //    new User
-            //        {
-            //            Id = Guid.NewGuid(),
-            //            Username = "Administrator",
-            //            Password = Crypto.HashPassword("!3joe37T")
-            //        });
-            //context.SaveChanges();
+            var roleAdmin = context.Roles.Add(new Role {Name = "Admin"});
+            var roleMember = context.Roles.Add(new Role {Name = "Member"});
+            context.SaveChanges();
+
+            context.Users.Add(new User
+                                  {
+                                      Username = "Administrator",
+                                      Password = Crypto.HashPassword("!3joe37T"),
+                                      Roles = {roleAdmin, roleMember}
+                                  });
+            context.Users.Add(new User
+                                  {
+                                      Username = "Member",
+                                      Password = Crypto.HashPassword("abc123"),
+                                      Roles = {roleMember}
+                                  });
+
+            context.SaveChanges();
         }
     }
 }

@@ -11,6 +11,7 @@ using WCCB.DataLayer.Repositories.Interfaces;
 using WCCB.Models;
 using WCCB.DataLayer;
 using WCCB.WebApplication.Models;
+using WebMatrix.WebData;
 
 namespace WCCB.WebApplication.Controllers
 {
@@ -71,7 +72,7 @@ namespace WCCB.WebApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                user.Id = Guid.NewGuid();
+                user.UserId = Guid.NewGuid();
                 user.Password = Crypto.HashPassword(user.Password);
                 _userRepository.Create(user);
                 return RedirectToAction("Index");
@@ -157,6 +158,48 @@ namespace WCCB.WebApplication.Controllers
         {
             _userRepository.Dispose();
             base.Dispose(disposing);
+        }
+
+        #endregion
+        
+        #region Login
+
+        [AllowAnonymous]
+        public ActionResult Login(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(LoginModel model, string returnUrl)
+        {
+            if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
+            {
+                return RedirectToLocal(returnUrl);
+            }
+
+            // If we got this far, something failed, redisplay form
+            ModelState.AddModelError("", "The user name or password provided is incorrect.");
+            return View(model);
+        }
+
+        #endregion
+
+        #region Helpers
+
+        private ActionResult RedirectToLocal(string returnUrl)
+        {
+            if (Url.IsLocalUrl(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         #endregion
