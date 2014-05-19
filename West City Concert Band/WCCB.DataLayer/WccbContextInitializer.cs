@@ -15,7 +15,7 @@ namespace WCCB.DataLayer
     {
         public WccbContextInitializer()
         {
-            this.Seed(new WccbContext());
+            //this.Seed(new WccbContext());
         }
 
         protected override void Seed(WccbContext context)

@@ -17,7 +17,7 @@ namespace WCCB.Models
         public Guid Id { get; set; }
 
         [MaxLength(450)]
-        [Index("UsernameIndex", IsUnique = true)]
+        //[Index("UsernameIndex", IsUnique = true)]
         public string Username { get; set; }
 
         public string Password { get; set; }

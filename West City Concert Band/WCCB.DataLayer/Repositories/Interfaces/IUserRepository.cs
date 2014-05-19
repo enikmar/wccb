@@ -7,7 +7,7 @@ using WCCB.Models;
 
 namespace WCCB.DataLayer.Repositories.Interfaces
 {
-    public interface IUserRepository : IRepositoryBase<User>
+    public interface IUserRepository : IGenericRepository<User>
     {
         bool CheckPassword(Guid id, string password);
     }
