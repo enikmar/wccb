@@ -6,20 +6,57 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Helpers;
 using System.Web.Security;
+using WCCB.DataLayer.DbContexts;
 using WCCB.DataLayer.Repositories;
 using WebMatrix.WebData;
 
 namespace WCCB.DataLayer.Providers
 {
+    /* 
+     * Custom Membership Provider:
+     * Property needed to be overriden - MinRequiredPasswordLength
+     * Methods needed to be overriden - ValidateUser(), ChangePassword()
+     */
     public class WccbMembershipProvider : MembershipProvider
     {
         private readonly UserRepository _userRepository;
+
+        #region Constructors
 
         public WccbMembershipProvider()
         {
             _userRepository = new UserRepository(new WccbContext());
         }
 
+        public WccbMembershipProvider(UserRepository userRepository)
+        {
+            _userRepository = userRepository;
+        }
+
+        #endregion
+
+        public override int MinRequiredPasswordLength
+        {
+            get { return 6; }
+        }
+
+        public override bool ValidateUser(string username, string password)
+        {
+            var user = _userRepository.GetUserByUsername(username);
+            return _userRepository.CheckPassword(user.UserId, password);
+        }
+
+        public override bool ChangePassword(string username, string oldPassword, string newPassword)
+        {
+            var user = _userRepository.GetUserByUsername(username);
+            if (_userRepository.CheckPassword(user.UserId, oldPassword))
+            {
+                _userRepository.UpdatePassword(user.UserId, newPassword);
+                return true;
+            }
+            return false;
+        }
+        
         #region Overrides of MembershipProvider
 
         public override MembershipUser CreateUser(string username, string password, string email, string passwordQuestion, string passwordAnswer, bool isApproved, object providerUserKey, out MembershipCreateStatus status)
@@ -37,11 +74,6 @@ namespace WCCB.DataLayer.Providers
             throw new NotImplementedException();
         }
 
-        public override bool ChangePassword(string username, string oldPassword, string newPassword)
-        {
-            throw new NotImplementedException();
-        }
-
         public override string ResetPassword(string username, string answer)
         {
             throw new NotImplementedException();
@@ -50,12 +82,6 @@ namespace WCCB.DataLayer.Providers
         public override void UpdateUser(MembershipUser user)
         {
             throw new NotImplementedException();
-        }
-
-        public override bool ValidateUser(string username, string password)
-        {
-            var user = _userRepository.GetUserByUsername(username);
-            return Crypto.VerifyHashedPassword(user.Password, password);
         }
 
         public override bool UnlockUser(string userName)
@@ -136,11 +162,6 @@ namespace WCCB.DataLayer.Providers
         }
 
         public override MembershipPasswordFormat PasswordFormat
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public override int MinRequiredPasswordLength
         {
             get { throw new NotImplementedException(); }
         }

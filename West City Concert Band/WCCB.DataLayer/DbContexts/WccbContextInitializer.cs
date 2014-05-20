@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Web.Helpers;
-using System.Web.Security;
 using WCCB.Models;
-using WebMatrix.WebData;
 
-namespace WCCB.DataLayer
+namespace WCCB.DataLayer.DbContexts
 {
     public class WccbContextInitializer : DropCreateDatabaseAlways<WccbContext>
     {
@@ -21,8 +13,8 @@ namespace WCCB.DataLayer
 
         protected override void Seed(WccbContext context)
         {
-            var roleAdmin = context.Roles.Add(new Role {Name = "Admin"});
-            var roleMember = context.Roles.Add(new Role {Name = "Member"});
+            var roleAdmin = context.Roles.Add(new Role {Name = "Administrators"});
+            var roleMember = context.Roles.Add(new Role {Name = "Members"});
             context.SaveChanges();
 
             context.Users.Add(new User

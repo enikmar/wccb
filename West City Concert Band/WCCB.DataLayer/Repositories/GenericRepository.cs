@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
+using WCCB.DataLayer.DbContexts;
 using WCCB.DataLayer.Repositories.Interfaces;
 
 namespace WCCB.DataLayer.Repositories
@@ -50,6 +51,11 @@ namespace WCCB.DataLayer.Repositories
         public virtual TEntity GetById(object id)
         {
             return _dbSet.Find(id);
+        }
+
+        public bool Exists(TEntity item)
+        {
+            return _dbSet.Contains(item);
         }
 
         public virtual void Create(TEntity entity)

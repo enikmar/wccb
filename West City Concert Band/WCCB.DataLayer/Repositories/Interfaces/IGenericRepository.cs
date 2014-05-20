@@ -17,6 +17,8 @@ namespace WCCB.DataLayer.Repositories.Interfaces
 
         TEntity GetById(object id);
 
+        bool Exists(TEntity item);
+
         void Create(TEntity item);
 
         void Update(TEntity item);

@@ -1,34 +1,36 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
+using WCCB.DataLayer.DbContexts;
+using WCCB.DataLayer.Providers;
 using WCCB.DataLayer.Repositories;
 using WCCB.DataLayer.Repositories.Interfaces;
 using WCCB.Models;
-using WCCB.DataLayer;
 using WCCB.WebApplication.Models;
-using WebMatrix.WebData;
 
 namespace WCCB.WebApplication.Controllers
 {
+    [Authorize(Roles = "Administrators")]
     public class UserController : Controller
     {
         private readonly IUserRepository _userRepository;
+        private readonly WccbMembershipProvider _membershipProvider;
+        private readonly WccbRoleProvider _roleProvider;
 
         #region Constructors
 
         public UserController()
         {
             _userRepository = new UserRepository(new WccbContext());
+            _membershipProvider = new WccbMembershipProvider();
+            _roleProvider = new WccbRoleProvider();
         }
 
         public UserController(IUserRepository userRepository)
         {
             _userRepository = userRepository;
+            _membershipProvider = new WccbMembershipProvider();
+            _roleProvider = new WccbRoleProvider();
         }
 
         #endregion
@@ -176,9 +178,10 @@ namespace WCCB.WebApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
-            if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
+            if (ModelState.IsValid)
             {
-                return RedirectToLocal(returnUrl);
+                if(_membershipProvider.ValidateUser(model.UserName, model.Password))
+                    return RedirectToLocal(returnUrl);
             }
 
             // If we got this far, something failed, redisplay form
