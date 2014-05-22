@@ -180,7 +180,8 @@ namespace WCCB.WebApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                if(_membershipProvider.ValidateUser(model.UserName, model.Password))
+
+                if (WebMatrix.WebData.WebSecurity.Login(model.UserName, model.Password))
                     return RedirectToLocal(returnUrl);
             }
 

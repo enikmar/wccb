@@ -42,6 +42,19 @@
                         <li>@Html.ActionLink("News", "Contact", "Home")</li>
                         <li>@Html.ActionLink("Gallery", "Contact", "Home")</li>
                         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        @if(Request.IsAuthenticated)
+                        {                            
+                            if(User.IsInRole("Administrators"))
+                            {
+                                <li>@Html.ActionLink("Manage","Contact", "Home")
+                                    <ul>
+                                        <li>@Html.ActionLink("Users","Contact", "Home")</li>
+                                        <li>@Html.ActionLink("Roles","Contact", "Home")</li>
+                                        <li>@Html.ActionLink("Members","Contact", "Home")</li>
+                                    </ul>
+                                </li>
+                            }
+                        }
                     </ul>
                 </nav>
             </div>

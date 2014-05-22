@@ -33,7 +33,7 @@ namespace WCCB.DataLayer.Repositories
 
         public User GetUserByUsername(string username)
         {
-            var users = Get(user => user.Username == username).ToList();
+            var users = Get(user => username == user.Username).ToList();
             return users.Any() ? users.First() : null;
         }
     }
