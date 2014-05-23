@@ -5,27 +5,21 @@ using System.Linq.Expressions;
 
 namespace WCCB.DataLayer.Repositories.Interfaces
 {
-    public interface IGenericRepository<TEntity>
+    public interface IGenericRepository<T>
     {
-        IEnumerable<TEntity> GetAll();
+        IQueryable<T> FindAll();
 
-        IEnumerable<TEntity> Get(
-           Expression<Func<TEntity, bool>> filter = null,
-           Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
-           int pageSize = 0,
-           int pageNo = 0);
+        IQueryable<T> FindBy(Expression<Func<T, bool>> filter);
+        
+        T FindById(object id);
 
-        TEntity GetById(object id);
+        T Create(T item);
 
-        bool Exists(TEntity item);
-
-        void Create(TEntity item);
-
-        void Update(TEntity item);
-
-        void Delete(TEntity item);
+        void Update(T item);
 
         void Delete(object id);
+
+        bool Exists(T item);
 
         void Dispose();
     }

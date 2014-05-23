@@ -9,32 +9,34 @@ namespace WCCB.DataLayer.Repositories
 {
     public class UserRepository : GenericRepository<User>, IUserRepository
     {
-        #region Constructors
-
-        public UserRepository(WccbContext context) : base(context)
-        {
-        }
-
-        #endregion
-
         public bool CheckPassword(Guid id, string password)
         {
-            var user = GetById(id);
+            var user = FindById(id);
             var hashedPassword = user.Password;
             return Crypto.VerifyHashedPassword(hashedPassword, password);
         }
 
-        public void UpdatePassword(Guid id, string password)
+        public void ChangePassword(Guid id, string password)
         {
-            var user = GetById(id);
+            var user = FindById(id);
             user.Password = Crypto.HashPassword(password);
             Update(user);
         }
 
-        public User GetUserByUsername(string username)
+        public override User Create(User item)
         {
-            var users = Get(user => username == user.Username).ToList();
-            return users.Any() ? users.First() : null;
+            var user = FindById(item.UserId);
+            user.Username = item.Username;
+            user.Password = Crypto.HashPassword(item.Password);
+            return base.Create(item);
+        }
+
+        public override void Update(User item)
+        {
+            var user = FindById(item.UserId);
+            user.Username = item.Username;
+            user.Password = Crypto.HashPassword(item.Password);
+            base.Update(item);
         }
     }
 }

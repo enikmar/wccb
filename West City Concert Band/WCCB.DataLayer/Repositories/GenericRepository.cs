@@ -8,83 +8,62 @@ using WCCB.DataLayer.Repositories.Interfaces;
 
 namespace WCCB.DataLayer.Repositories
 {
-    public abstract class GenericRepository<TEntity> : IGenericRepository<TEntity>
-        where TEntity : class
+    public abstract class GenericRepository<T> : IGenericRepository<T>
+        where T : class
     {
-        private readonly WccbContext _context;
-        private readonly DbSet<TEntity> _dbSet;
+        readonly WccbContext _context;
+        readonly DbSet<T> _dbSet;
 
-        protected GenericRepository(WccbContext context)
+        protected GenericRepository()
         {
-            _context = context;
-            _dbSet = context.Set<TEntity>();
+            _context = new WccbContext();
+            _dbSet = _context.Set<T>();
         }
 
-        public virtual IEnumerable<TEntity> Get(
-           Expression<Func<TEntity, bool>> filter = null,
-           Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
-           int pageSize = 0,
-           int pageNo = 0)
+        public virtual IQueryable<T> FindAll()
         {
-            IQueryable<TEntity> resultSet = _dbSet;
+            return _dbSet.AsQueryable();
+        }
+
+        public virtual IQueryable<T> FindBy(Expression<Func<T, bool>> filter)
+        {
+            var resultSet = _dbSet.AsQueryable();
 
             if (filter != null)
                 resultSet = resultSet.Where(filter);
-
-            if (orderBy != null)
-                resultSet = orderBy(resultSet);
-
-            if (pageNo > 0)
-                resultSet = resultSet.Skip(pageSize * pageNo);
-
-            if (pageSize > 0)
-                resultSet = resultSet.Take(pageSize);
             
-            return resultSet.ToList();
+            return resultSet;
         }
 
-        public virtual IEnumerable<TEntity> GetAll()
-        {
-            return _context.Set<TEntity>();
-        }
-
-        public virtual TEntity GetById(object id)
+        public virtual T FindById(object id)
         {
             return _dbSet.Find(id);
         }
 
-        public bool Exists(TEntity item)
+        public virtual bool Exists(T item)
         {
             return _dbSet.Contains(item);
         }
 
-        public virtual void Create(TEntity entity)
+        public virtual T Create(T item)
         {
-            _dbSet.Add(entity);
+            _dbSet.Add(item);
             _context.SaveChanges();
+            return item;
         }
 
-        public virtual void Update(TEntity item)
+        public virtual void Update(T item)
         {
             _dbSet.Attach(item);
             //_context.Entry(item).State = EntityState.Modified;
             _context.SaveChanges();
         }
 
-        public virtual void Delete(TEntity item)
-        {
-            //if (_context.Entry(item).State == EntityState.Detached)
-            //{
-            //    _dbSet.Attach(item);
-            //}
-            _dbSet.Remove(item);
-            _context.SaveChanges();
-        }
-
         public virtual void Delete(object id)
         {
-            TEntity entityToDelete = _dbSet.Find(id);
-            Delete(entityToDelete);
+            var item = _dbSet.Find(id);
+            _dbSet.Remove(item);
+            _context.SaveChanges();
         }
 
         public virtual void Dispose()

@@ -25,7 +25,7 @@ namespace WCCB.DataLayer.Providers
 
         public WccbMembershipProvider()
         {
-            _userRepository = new UserRepository(new WccbContext());
+            _userRepository = new UserRepository();
         }
 
         public WccbMembershipProvider(UserRepository userRepository)
@@ -42,16 +42,16 @@ namespace WCCB.DataLayer.Providers
 
         public override bool ValidateUser(string username, string password)
         {
-            var user = _userRepository.GetUserByUsername(username);
-            return _userRepository.CheckPassword(user.UserId, password);
+            var user = _userRepository.FindBy(x => x.Username == username).FirstOrDefault();
+            return user != null && _userRepository.CheckPassword(user.UserId, password);
         }
 
         public override bool ChangePassword(string username, string oldPassword, string newPassword)
         {
-            var user = _userRepository.GetUserByUsername(username);
-            if (_userRepository.CheckPassword(user.UserId, oldPassword))
+            var user = _userRepository.FindBy(x => x.Username == username).FirstOrDefault();
+            if (user != null && _userRepository.CheckPassword(user.UserId, oldPassword))
             {
-                _userRepository.UpdatePassword(user.UserId, newPassword);
+                _userRepository.ChangePassword(user.UserId, newPassword);
                 return true;
             }
             return false;

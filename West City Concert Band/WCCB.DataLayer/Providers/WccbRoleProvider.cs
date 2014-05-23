@@ -19,7 +19,7 @@ namespace WCCB.DataLayer.Providers
 
         public WccbRoleProvider()
         {
-            _roleRepository = new RoleRepository(new WccbContext());
+            _roleRepository = new RoleRepository();
         }
 
         public WccbRoleProvider(IRoleRepository roleRepository)

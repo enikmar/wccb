@@ -17,7 +17,7 @@ namespace WCCB.WebApplication.Controllers
     //[InitializeSimpleMembership]
     public class AccountController : Controller
     {
-        #region Logn
+        #region Login
 
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
