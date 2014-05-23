@@ -11,13 +11,11 @@ using WebMatrix.WebData;
 
 namespace WCCB.WebApplication.Controllers
 {
-    [Authorize]
     public class UserController : Controller
     {
         
         #region Login
 
-        [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
@@ -25,7 +23,6 @@ namespace WCCB.WebApplication.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl)
         {

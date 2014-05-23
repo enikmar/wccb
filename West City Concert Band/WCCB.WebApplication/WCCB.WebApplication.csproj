@@ -183,6 +183,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
+    <Compile Include="Areas\Administration\Controllers\RoleController.cs" />
     <Compile Include="Areas\Administration\Controllers\UserController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -285,6 +286,11 @@
     <Content Include="Areas\Administration\Views\User\Edit.cshtml" />
     <Content Include="Areas\Administration\Views\User\Delete.cshtml" />
     <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Administration\Views\Role\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Role\Details.cshtml" />
+    <Content Include="Areas\Administration\Views\Role\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\Role\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\Role\Delete.cshtml" />
     <None Include="Properties\PublishProfiles\Release.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\slider1.jpg" />

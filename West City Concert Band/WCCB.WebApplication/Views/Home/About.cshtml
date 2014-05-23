@@ -2,33 +2,50 @@
     ViewBag.Title = "About";
 }
 
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-    <h2>@ViewBag.Message</h2>
-</hgroup>
+<article>
+    <h3>Who are we?</h3>
+    <p class="left">
+        West City Concert Band is West Auckland's prime community band that offers an environment for local musicians to join together and perform wind ensemble work. This environment provides many learning opportunities, a sense of achievement, friendly people, a great socialising space and of course, lots of FUN!
+    </p>
+</article>    
 
 <article>
-    <p>
-        Use this area to provide additional information.
-    </p>
-
-    <p>
-        Use this area to provide additional information.
-    </p>
-
-    <p>
-        Use this area to provide additional information.
+    <h3>Are we in the community?</h3>
+	<p>
+        We certainly are!<br/>    
+        West City Concert Band was built from the ground up over 25 years ago and we pride ourselves for being the band of the Waitakere/West Auckland community. Many, if not all, of our band members live locally or have close ties with the Waitakere region.<br/>
+	    Performances are held throughout the year at various locations across West Auckland. These usually include Anzac Day dawn services, joint concerts with local schools, charity events, santa parades across the region and many more.<br/>
     </p>
 </article>
 
-<aside>
-    <h3>Aside Title</h3>
-    <p>
-        Use this area to provide additional information.
-    </p>
-    <ul>
-        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-        <li>@Html.ActionLink("About", "About", "Home")</li>
-        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-    </ul>
-</aside>
+<article>
+    <h3>Who do we consist of?</h3>
+	<p>West City Concert Band has a diverse range of players with contrasting backgrounds, experience and skill levels. This includes high school and university students, retirees, intermediate to seasoned musicians and working professionals who wish to keep up with their music.</p>
+</article>
+
+<article>
+    <h3>What do we play?</h3>
+	<p>Anything and everything!
+
+	West City Concert Band has a diverse repertoire. This includes classical, jazz, show music, movie themes, major competition works and much more.
+
+	As we are involved in many different types of performances, we accommodate to both the audience and the general setting. </p>
+</article>
+
+<style scoped>
+    .right {
+        float:  right;
+    }
+    
+    .left {
+        float:  left;
+    }
+    
+    img.rotate {
+        transform:rotate(7deg);
+        -ms-transform:rotate(7deg); /* IE 9 */
+        -webkit-transform:rotate(7deg); /* Safari and Chrome */
+        border-radius:5px;
+        box-shadow: 5px 5px 2px #888888;
+    }
+</style>

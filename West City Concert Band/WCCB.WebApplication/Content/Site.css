@@ -8,7 +8,7 @@ body {
     background-color: #222;
     /*border-top: solid 10px #000;*/
     color: #333;
-    font-size: .85em;
+    /*font-size: .85em;*/
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
     margin: 0;
     padding: 0;
@@ -129,7 +129,7 @@ h5, h6 {
 .main-content {
     /*background: url("../Images/accent.png") no-repeat;*/
     padding-left: 10px;
-    padding-top: 30px;
+    /*padding-top: 10px;*/
 }
 
 .featured + .main-content {
@@ -203,7 +203,7 @@ footer {
 ----------------------------------------------------------*/
 ul#menu {
     /*background-color: aqua;*/
-    font-size: 1.3em;
+    font-size: 1.2em;
     font-weight: 600;
     margin: 25px 0 0 0;
     padding: 0;

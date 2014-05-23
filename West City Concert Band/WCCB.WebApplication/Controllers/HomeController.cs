@@ -8,20 +8,23 @@ namespace WCCB.WebApplication.Controllers
 {
     public class HomeController : Controller
     {
+        #region Home Page
+
         public ActionResult Index()
         {
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-
             return View();
         }
-        
-        [Authorize]
+
+        #endregion
+
+        #region About
+
         public ActionResult About()
         {
-            ViewBag.Message = "Your app description page.";
-
             return View();
         }
+
+        #endregion
 
         public ActionResult Contact()
         {

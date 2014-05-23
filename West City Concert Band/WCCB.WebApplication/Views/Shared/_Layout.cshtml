@@ -48,8 +48,8 @@
                             {
                                 <li>@Html.ActionLink("Manage","Contact", "Home")
                                     <ul>
-                                        <li>@Html.ActionLink("Users","Index", "User", new { area = "Administration" }, null)</li>
-                                        <li>@Html.ActionLink("Roles","Contact", "Home")</li>
+                                        <li>@Html.ActionLink("Users", "Index", "User", new { area = "Administration" }, null)</li>
+                                        <li>@Html.ActionLink("Roles", "Index", "Role", new { area = "Administration" }, null)</li>
                                         <li>@Html.ActionLink("Members","Contact", "Home")</li>
                                     </ul>
                                 </li>
@@ -62,6 +62,14 @@
     </header>
     @RenderSection("slider", required: false)
     <div id="body">
+        @if (!string.IsNullOrEmpty(ViewBag.Title))
+        {
+            <div class="fullwidthbanner-container" style="background-color: lightgray; ">
+                <div class="content-wrapper">
+                    <h1 style="margin: 10px">@ViewBag.Title</h1>
+                </div>
+            </div>
+        }
         @RenderSection("featured", required: false)
         <section class="content-wrapper main-content clear-fix">
             @RenderBody()
