@@ -15,7 +15,7 @@ namespace WCCB.WebApplication.Controllers
 {
     [Authorize]
     //[InitializeSimpleMembership]
-    public class AccountController : Controller
+    public class AccountController : ApplicationController
     {
         #region Login
 

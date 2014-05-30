@@ -5,11 +5,12 @@ using WCCB.DataLayer.Repositories;
 using WCCB.DataLayer.Repositories.Interfaces;
 using WCCB.Models;
 using WCCB.WebApplication.Areas.Administration.Models;
+using WCCB.WebApplication.Controllers;
 
 namespace WCCB.WebApplication.Areas.Administration.Controllers
 {
     [Authorize(Roles = "Administrators")]
-    public class UserController : Controller
+    public class UserController : ApplicationController
     {
         private readonly IUserRepository _userRepository;
 

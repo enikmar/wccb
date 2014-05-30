@@ -8,7 +8,7 @@ body {
     background-color: #222;
     /*border-top: solid 10px #000;*/
     color: #333;
-    /*font-size: .85em;*/
+    font-size: .95em;
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
     margin: 0;
     padding: 0;
@@ -187,6 +187,7 @@ footer {
             margin: 0;
             padding: 0;
             text-decoration: underline;
+            color: #c7d1d6;
         }
 
     #login ul {
@@ -219,7 +220,7 @@ ul#menu {
         list-style: none;
         display: inline-block;
         text-transform: uppercase;
-        font-size: 16px;
+        font-size: 0.85em;
         margin: 0 8px;
         height: 42px;
     }

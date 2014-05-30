@@ -11,9 +11,19 @@ using WebMatrix.WebData;
 
 namespace WCCB.WebApplication.Controllers
 {
-    public class UserController : Controller
+    public class UserController : ApplicationController
     {
-        
+        private readonly IUserRepository _userRepository;
+
+        #region Constructors
+
+        public UserController()
+        {
+            _userRepository = new UserRepository();
+        }
+
+        #endregion
+
         #region Login
 
         public ActionResult Login(string returnUrl)
@@ -52,7 +62,17 @@ namespace WCCB.WebApplication.Controllers
         }
 
         #endregion
-        
+
+        #region Details
+
+        public ActionResult Detail(Guid id)
+        {
+            var user = _userRepository.FindById(id);
+            return View(user);
+        }
+
+        #endregion
+
         #region Helpers
 
         private ActionResult RedirectToLocal(string returnUrl)
@@ -68,6 +88,5 @@ namespace WCCB.WebApplication.Controllers
         }
 
         #endregion
-
     }
 }

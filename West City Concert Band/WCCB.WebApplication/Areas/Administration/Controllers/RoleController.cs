@@ -7,11 +7,12 @@ using System.Web;
 using System.Web.Mvc;
 using WCCB.Models;
 using WCCB.DataLayer.DbContexts;
+using WCCB.WebApplication.Controllers;
 
 namespace WCCB.WebApplication.Areas.Administration.Controllers
 {
     [Authorize(Roles = "Administrators")]
-    public class RoleController : Controller
+    public class RoleController : ApplicationController
     {
         private WccbContext db = new WccbContext();
 

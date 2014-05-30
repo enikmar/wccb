@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace WCCB.WebApplication.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : ApplicationController
     {
         #region Home Page
 
