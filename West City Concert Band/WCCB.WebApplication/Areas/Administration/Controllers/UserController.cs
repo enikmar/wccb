@@ -63,13 +63,12 @@ namespace WCCB.WebApplication.Areas.Administration.Controllers
             var model = new UserCreateViewModel
                 {
                     User = new User(),
-                    //UserProfile = new UserProfile(),
                     Roles = _roleRepository.FindAll().ToList().Select(x => new CheckBoxListItem
                         {
                             Text = x.Name,
                             Value = Convert.ToString(x.RoleId),
                             Selected = false
-                        })
+                        }).ToList()
                 };
             return View(model);
         }
@@ -102,22 +101,37 @@ namespace WCCB.WebApplication.Areas.Administration.Controllers
         public ActionResult Edit(Guid id)
         {
             var user = _userRepository.FindById(id);
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
-            return View(user);
+            var model = new UserEditViewModel
+                {
+                    User = user,
+                    Roles = _roleRepository.FindAll().ToList().Select(x => new CheckBoxListItem
+                        {
+                            Text = x.Name,
+                            Value = Convert.ToString(x.RoleId),
+                            Selected = user.Roles.Select(y => y.RoleId).Contains(x.RoleId),
+                        })
+                };
+            return View(model);
         }
 
         [HttpPost]
-        public ActionResult Edit(User user)
+        public ActionResult Edit(UserEditViewModel model)
         {
             if (ModelState.IsValid)
             {
-                _userRepository.Update(user);
+                var roles = model.Roles.Where(x => x.Selected).Select(x => Convert.ToDouble(x.Value)).ToList();
+                model.User.Roles = _roleRepository.FindBy(x => roles.Contains(x.RoleId)).ToList();
+                _userRepository.Update(model.User);
                 return RedirectToAction("Index");
             }
-            return View(user);
+            var user = _userRepository.FindById(model.User.UserId);
+            model.Roles = _roleRepository.FindAll().ToList().Select(x => new CheckBoxListItem
+                {
+                    Text = x.Name,
+                    Value = Convert.ToString(x.RoleId),
+                    Selected = user.Roles.Select(y => y.RoleId).Contains(x.RoleId),
+                });
+            return View(model);
         }
 
         #endregion

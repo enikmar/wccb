@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web.Helpers;
 using WCCB.DataLayer.DbContexts;
@@ -49,8 +50,28 @@ namespace WCCB.DataLayer.Repositories
         {
             var user = FindById(item.UserId);
             user.Username = item.Username;
-            user.Password = Crypto.HashPassword(item.Password);
-            base.Update(item);
+            user.Updated = DateTime.Now;
+            user.UserProfile.Firstname = item.UserProfile.Firstname;
+            user.UserProfile.Lastname = item.UserProfile.Lastname;
+            user.UserProfile.Email = item.UserProfile.Email;
+            user.UserProfile.PhoneNumber = item.UserProfile.PhoneNumber;
+            user.UserProfile.MobileNumber = item.UserProfile.MobileNumber;
+            user.UserProfile.Address1 = item.UserProfile.Address1;
+            user.UserProfile.Address2 = item.UserProfile.Address2;
+            user.UserProfile.Suburb = item.UserProfile.Suburb;
+            user.UserProfile.ImgagePath = item.UserProfile.ImgagePath;
+            user.UserProfile.PreferredContactType = item.UserProfile.PreferredContactType;
+            user.Roles.Clear();
+
+            Context.Users.Attach(user);
+            Context.Entry(user).State = EntityState.Modified;
+
+            //assign roles to user
+            foreach (var dbRole in item.Roles.Select(role => Context.Roles.First(x => x.RoleId == role.RoleId)))
+            {
+                user.Roles.Add(dbRole);
+            }
+            Context.SaveChanges();
         }
         
     }

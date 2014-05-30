@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
@@ -55,7 +56,7 @@ namespace WCCB.DataLayer.Repositories
         public virtual void Update(T item)
         {
             DbSet.Attach(item);
-            //_context.Entry(item).State = EntityState.Modified;
+            Context.Entry(item).State = EntityState.Modified;
             Context.SaveChanges();
         }
 

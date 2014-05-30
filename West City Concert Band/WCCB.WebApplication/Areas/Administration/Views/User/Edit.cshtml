@@ -1,10 +1,8 @@
-﻿@model WCCB.Models.User
+﻿@model WCCB.WebApplication.Areas.Administration.Models.UserEditViewModel
 
 @{
     ViewBag.Title = "Edit";
 }
-
-<h2>Edit</h2>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
@@ -12,22 +10,46 @@
     <fieldset>
         <legend>User</legend>
 
-        @Html.HiddenFor(model => model.UserId)
-
+        @Html.HiddenFor(model => model.User.UserId)
+        
         <div class="editor-label">
-            @Html.LabelFor(model => model.Username)
+            @Html.LabelFor(model => model.User.UserProfile.Firstname)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Username)
-            @Html.ValidationMessageFor(model => model.Username)
+            @Html.EditorFor(model => model.User.UserProfile.Firstname)
+            @Html.ValidationMessageFor(model => model.User.UserProfile.Firstname)
+        </div>
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.User.UserProfile.Lastname)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.User.UserProfile.Lastname)
+            @Html.ValidationMessageFor(model => model.User.UserProfile.Lastname)
+        </div>
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.User.UserProfile.Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.User.UserProfile.Email)
+            @Html.ValidationMessageFor(model => model.User.UserProfile.Email)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Password)
+            @Html.LabelFor(model => model.User.Username)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Password)
-            @Html.ValidationMessageFor(model => model.Password)
+            @Html.EditorFor(model => model.User.Username)
+            @Html.ValidationMessageFor(model => model.User.Username)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Roles)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Roles)
+            @Html.ValidationMessageFor(model => model.Roles)
         </div>
 
         <p>

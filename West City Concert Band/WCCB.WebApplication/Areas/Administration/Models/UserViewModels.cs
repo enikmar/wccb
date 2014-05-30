@@ -31,5 +31,10 @@ namespace WCCB.WebApplication.Areas.Administration.Models
         public string ConfirmPassword { get; set; }
     }
 
+    public class UserEditViewModel
+    {
+        public User User { get; set; }
+        public IEnumerable<CheckBoxListItem> Roles { get; set; } 
+    }
 
 }
