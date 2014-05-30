@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WCCB.Models.User>
+﻿@model IEnumerable<WCCB.WebApplication.Areas.Administration.Models.UserViewModel>
 
 @{
     ViewBag.Title = "Users";
@@ -12,26 +12,46 @@
 <table>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Username)
+            @Html.DisplayNameFor(model => model.UserProfile.Firstname)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Password)
+            @Html.DisplayNameFor(model => model.UserProfile.Lastname)
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.Created)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.Updated)
+        </th>
+        <th>
+            Actions
+        </th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Username)
+            @Html.DisplayFor(modelItem => item.UserProfile.Firstname)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Password)
+            @Html.DisplayFor(modelItem => item.UserProfile.Lastname)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.UserId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.UserId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.UserId })
+            @Html.DisplayFor(modelItem => item.User.Username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.Created)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.Updated)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.User.UserId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.User.UserId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.User.UserId })
         </td>
     </tr>
 }

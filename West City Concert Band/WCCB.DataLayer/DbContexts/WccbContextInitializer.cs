@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Linq;
 using System.Web.Helpers;
 using WCCB.Models;
 
@@ -8,10 +9,10 @@ namespace WCCB.DataLayer.DbContexts
     {
         public WccbContextInitializer()
         {
-            this.Seed(new WccbContext());
+            Seed(new WccbContext());
         }
 
-        protected override void Seed(WccbContext context)
+        protected override sealed void Seed(WccbContext context)
         {
             var roleAdmin = context.Roles.Add(new Role {Name = "Administrators"});
             var roleMember = context.Roles.Add(new Role {Name = "Members"});
@@ -19,18 +20,31 @@ namespace WCCB.DataLayer.DbContexts
 
             context.Users.Add(new User
                                   {
-                                      Username = "Administrator",
+                                      Username = "lamara",
                                       Password = Crypto.HashPassword("!3joe37T"),
-                                      Roles = {roleAdmin, roleMember}
+                                      Roles = {roleAdmin, roleMember}, 
+                                      UserProfile = new UserProfile
+                                                        {
+                                                            Firstname = "Lamar",
+                                                            Lastname = "Ah-chee",
+                                                            Email = "lamara@westcityband.org"
+                                                        }
                                   });
             context.Users.Add(new User
                                   {
-                                      Username = "Member",
-                                      Password = Crypto.HashPassword("abc123"),
-                                      Roles = {roleMember}
+                                      Username = "benh",
+                                      Password = Crypto.HashPassword("benh"),
+                                      Roles = {roleMember},
+                                      UserProfile = new UserProfile
+                                                        {
+                                                            Firstname = "Ben",
+                                                            Lastname = "Harrington",
+                                                            Email = "benh@westcityband.org"
+                                                        },
                                   });
 
             context.SaveChanges();
+            context.Dispose();
         }
     }
 }

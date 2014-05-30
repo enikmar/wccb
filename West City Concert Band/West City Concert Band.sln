@@ -7,7 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCCB.Models", "WCCB.Models\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCCB.DataLayer", "WCCB.DataLayer\WCCB.DataLayer.csproj", "{A172A852-87CA-4B2C-8B73-7A30690639CB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCCB.Helpers", "WCCB.Helpers\WCCB.Helpers.csproj", "{4567A9E8-F187-4A59-AE32-0AF24CEF64D6}"
+EndProject
 Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -25,12 +31,12 @@ Global
 		{A172A852-87CA-4B2C-8B73-7A30690639CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A172A852-87CA-4B2C-8B73-7A30690639CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A172A852-87CA-4B2C-8B73-7A30690639CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4567A9E8-F187-4A59-AE32-0AF24CEF64D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4567A9E8-F187-4A59-AE32-0AF24CEF64D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4567A9E8-F187-4A59-AE32-0AF24CEF64D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4567A9E8-F187-4A59-AE32-0AF24CEF64D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(SubversionScc) = preSolution
-		Svn-Managed = True
-		Manager = AnkhSVN - Subversion Support for Visual Studio
 	EndGlobalSection
 EndGlobal

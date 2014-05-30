@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using WCCB.DataLayer.Repositories;
 using WCCB.DataLayer.Repositories.Interfaces;
 using WCCB.Models;
+using WCCB.WebApplication.Areas.Administration.Models;
 
 namespace WCCB.WebApplication.Areas.Administration.Controllers
 {
@@ -24,7 +26,13 @@ namespace WCCB.WebApplication.Areas.Administration.Controllers
 
         public ActionResult Index()
         {
-            return View(_userRepository.FindAll());
+            var model = _userRepository.FindAll().ToList().Select(x => new UserViewModel
+                                                                           {
+                                                                               User = x,
+                                                                               UserProfile = x.UserProfile,
+                                                                               //Roles = x.Roles
+                                                                           });
+            return View(model);
         }
 
         #endregion
