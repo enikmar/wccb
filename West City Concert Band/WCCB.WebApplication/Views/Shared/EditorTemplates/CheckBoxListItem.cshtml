@@ -1,0 +1,7 @@
+﻿@model WCCB.WebApplication.Models.Shared.CheckBoxListItem
+
+<p style="margin-left:20px">
+    @Html.CheckBoxFor(x => x.Selected)
+    @Html.Label(Model.Text, new { @class = "checkbox"})
+    @Html.HiddenFor(x => x.Value)
+</p>

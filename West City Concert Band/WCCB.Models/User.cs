@@ -17,13 +17,17 @@ namespace WCCB.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid UserId { get; set; }
 
+        [Required]
         public string Username { get; set; }
-
+            
+        [DataType(DataType.Password)]
         public string Password { get; set; }
 
+        [DataType(DataType.DateTime)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yy}")]
         public DateTime Created { get; set; }
 
+        [DataType(DataType.DateTime)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yy}")]
         public DateTime? Updated { get; set; }
 

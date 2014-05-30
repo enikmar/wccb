@@ -21,8 +21,8 @@
                 </section>
                 <nav>
                     <ul id="menu">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")
+                        <li>@Html.ActionLink("Home", "Index", "Home", new { @area = ""}, null)</li>
+                        <li>@Html.ActionLink("About", "About", "Home", new { @area = ""}, null)
                             <ul>
                                 <li>@Html.ActionLink("Musical Director", "About", "Home")</li>
                                 <li>@Html.ActionLink("Players", "About", "Home")</li>

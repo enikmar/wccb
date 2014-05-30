@@ -11,23 +11,23 @@ namespace WCCB.DataLayer.Repositories
     public abstract class GenericRepository<T> : IGenericRepository<T>
         where T : class
     {
-        readonly WccbContext _context;
-        readonly DbSet<T> _dbSet;
+        protected WccbContext Context;
+        protected DbSet<T> DbSet;
 
         protected GenericRepository()
         {
-            _context = new WccbContext();
-            _dbSet = _context.Set<T>();
+            Context = new WccbContext();
+            DbSet = Context.Set<T>();
         }
 
         public virtual IQueryable<T> FindAll()
         {
-            return _dbSet.AsQueryable();
+            return DbSet.AsQueryable();
         }
 
         public virtual IQueryable<T> FindBy(Expression<Func<T, bool>> filter)
         {
-            var resultSet = _dbSet.AsQueryable();
+            var resultSet = DbSet.AsQueryable();
 
             if (filter != null)
                 resultSet = resultSet.Where(filter);
@@ -37,38 +37,38 @@ namespace WCCB.DataLayer.Repositories
 
         public virtual T FindById(object id)
         {
-            return _dbSet.Find(id);
+            return DbSet.Find(id);
         }
 
         public virtual bool Exists(T item)
         {
-            return _dbSet.Contains(item);
+            return DbSet.Contains(item);
         }
 
         public virtual T Create(T item)
         {
-            _dbSet.Add(item);
-            _context.SaveChanges();
+            DbSet.Add(item);
+            Context.SaveChanges();
             return item;
         }
 
         public virtual void Update(T item)
         {
-            _dbSet.Attach(item);
+            DbSet.Attach(item);
             //_context.Entry(item).State = EntityState.Modified;
-            _context.SaveChanges();
+            Context.SaveChanges();
         }
 
         public virtual void Delete(object id)
         {
-            var item = _dbSet.Find(id);
-            _dbSet.Remove(item);
-            _context.SaveChanges();
+            var item = DbSet.Find(id);
+            DbSet.Remove(item);
+            Context.SaveChanges();
         }
 
         public virtual void Dispose()
         {
-            _context.Dispose();
+            Context.Dispose();
             GC.SuppressFinalize(this);
         }
 

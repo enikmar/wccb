@@ -8,6 +8,8 @@ using System.Web.Helpers;
 using System.Web.Security;
 using WCCB.DataLayer.DbContexts;
 using WCCB.DataLayer.Repositories;
+using WCCB.DataLayer.Repositories.Interfaces;
+using WCCB.Models;
 using WebMatrix.WebData;
 
 namespace WCCB.DataLayer.Providers
@@ -19,7 +21,7 @@ namespace WCCB.DataLayer.Providers
      */
     public class WccbMembershipProvider : ExtendedMembershipProvider
     {
-        private readonly UserRepository _userRepository;
+        private readonly IUserRepository _userRepository;
 
         #region Constructors
 
@@ -28,7 +30,7 @@ namespace WCCB.DataLayer.Providers
             _userRepository = new UserRepository();
         }
 
-        public WccbMembershipProvider(UserRepository userRepository)
+        public WccbMembershipProvider(IUserRepository userRepository)
         {
             _userRepository = userRepository;
         }

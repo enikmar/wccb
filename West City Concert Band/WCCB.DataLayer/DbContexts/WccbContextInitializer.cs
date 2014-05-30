@@ -5,7 +5,7 @@ using WCCB.Models;
 
 namespace WCCB.DataLayer.DbContexts
 {
-    public class WccbContextInitializer : DropCreateDatabaseAlways<WccbContext>
+    public class WccbContextInitializer : DropCreateDatabaseIfModelChanges<WccbContext>
     {
         public WccbContextInitializer()
         {
@@ -14,15 +14,18 @@ namespace WCCB.DataLayer.DbContexts
 
         protected override sealed void Seed(WccbContext context)
         {
-            var roleAdmin = context.Roles.Add(new Role {Name = "Administrators"});
-            var roleMember = context.Roles.Add(new Role {Name = "Members"});
+
+#if false
+		
+            var roleAdmin = context.Roles.Add(new Role { Name = "Administrators" });
+            var roleMember = context.Roles.Add(new Role { Name = "Members" });
             context.SaveChanges();
 
             context.Users.Add(new User
                                   {
                                       Username = "lamara",
                                       Password = Crypto.HashPassword("!3joe37T"),
-                                      Roles = {roleAdmin, roleMember}, 
+                                      Roles = { roleAdmin, roleMember },
                                       UserProfile = new UserProfile
                                                         {
                                                             Firstname = "Lamar",
@@ -34,7 +37,7 @@ namespace WCCB.DataLayer.DbContexts
                                   {
                                       Username = "benh",
                                       Password = Crypto.HashPassword("benh"),
-                                      Roles = {roleMember},
+                                      Roles = { roleMember },
                                       UserProfile = new UserProfile
                                                         {
                                                             Firstname = "Ben",
@@ -45,6 +48,7 @@ namespace WCCB.DataLayer.DbContexts
 
             context.SaveChanges();
             context.Dispose();
+#endif
         }
     }
 }

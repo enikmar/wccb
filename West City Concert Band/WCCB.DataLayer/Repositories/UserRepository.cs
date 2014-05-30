@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Helpers;
 using WCCB.DataLayer.DbContexts;
@@ -25,10 +26,23 @@ namespace WCCB.DataLayer.Repositories
 
         public override User Create(User item)
         {
-            var user = FindById(item.UserId);
-            user.Username = item.Username;
-            user.Password = Crypto.HashPassword(item.Password);
-            return base.Create(item);
+            var user = new User
+                {
+                    Username = item.Username,
+                    UserProfile = item.UserProfile,
+                    Created = DateTime.Now,
+                    Password = Crypto.HashPassword(item.Password),
+                };
+
+            Context.Users.Add(user);
+
+            //assign roles to user
+            foreach (var dbRole in item.Roles.Select(role => Context.Roles.First(x => x.RoleId == role.RoleId)))
+            {
+                user.Roles.Add(dbRole);
+            }
+            Context.SaveChanges();
+            return user;
         }
 
         public override void Update(User item)
@@ -38,5 +52,6 @@ namespace WCCB.DataLayer.Repositories
             user.Password = Crypto.HashPassword(item.Password);
             base.Update(item);
         }
+        
     }
 }

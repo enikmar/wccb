@@ -30,12 +30,13 @@ namespace WCCB.WebApplication.Areas.Administration.Controllers
 
         public ActionResult Index()
         {
-            var model = _userRepository.FindAll().ToList().Select(x => new UserViewModel
-                                                                           {
-                                                                               User = x,
-                                                                               UserProfile = x.UserProfile,
-                                                                               //Roles = x.Roles
-                                                                           });
+            var model =
+                _userRepository.FindAll().OrderBy(x => x.UserProfile.Firstname).ToList().Select(x => new UserViewModel
+                    {
+                        User = x,
+                        //UserProfile = x.UserProfile,
+                        //Roles = x.Roles
+                    });
             return View(model);
         }
 
@@ -60,16 +61,16 @@ namespace WCCB.WebApplication.Areas.Administration.Controllers
         public ActionResult Create()
         {
             var model = new UserCreateViewModel
-                            {
-                                User = new User(),
-                                UserProfile = new UserProfile(),
-                                Roles = _roleRepository.FindAll().Select(x => new CheckBoxListItem
-                                                                                  {
-                                                                                      Text = x.Name,
-                                                                                      Value = Convert.ToString(x.RoleId),
-                                                                                      Selected = false
-                                                                                  })
-                            };
+                {
+                    User = new User(),
+                    //UserProfile = new UserProfile(),
+                    Roles = _roleRepository.FindAll().ToList().Select(x => new CheckBoxListItem
+                        {
+                            Text = x.Name,
+                            Value = Convert.ToString(x.RoleId),
+                            Selected = false
+                        })
+                };
             return View(model);
         }
 
@@ -78,11 +79,19 @@ namespace WCCB.WebApplication.Areas.Administration.Controllers
         {
             if (ModelState.IsValid)
             {
-                model.User.UserProfile = model.UserProfile;
+                var roles = model.Roles.Where(x => x.Selected).Select(x => Convert.ToDouble(x.Value)).ToList();
+                model.User.Password = model.Password;
+                model.User.Roles = _roleRepository.FindBy(x => roles.Contains(x.RoleId)).ToList();
                 _userRepository.Create(model.User);
                 return RedirectToAction("Index");
             }
-
+            model.Roles = _roleRepository.FindAll().ToList()
+                                         .Select(x => new CheckBoxListItem
+                                             {
+                                                 Text = x.Name,
+                                                 Value = Convert.ToString(x.RoleId),
+                                                 Selected = false
+                                             });
             return View(model);
         }
 

@@ -24,6 +24,5 @@ namespace WCCB.DataLayer.Repositories
             var roles = FindBy(x => x.Name == roleName).ToList();
             return roles.Any() ? roles.First() : null;
         }
-
     }
 }

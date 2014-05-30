@@ -10,7 +10,7 @@ namespace WCCB.WebApplication.Controllers
         {
             if (User != null)
             {
-                var user = new UserRepository().FindBy(x => x.Username == User.Identity.Name).SingleOrDefault();
+                var user = new UserRepository().FindBy(x => x.Username == User.Identity.Name).FirstOrDefault();
                 if (user != null)
                 {
                     ViewData.Add("UserName", string.Format("{0} {1}", user.UserProfile.Firstname, user.UserProfile.Lastname));
