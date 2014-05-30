@@ -31,5 +31,7 @@ namespace WCCB.Models
         public string MobileNumber { get; set; }
 
         public string PreferredContactType { get; set; }
+
+        public string ImgagePath { get; set; }
     }
 }

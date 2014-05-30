@@ -6,6 +6,7 @@ using WCCB.DataLayer.Repositories.Interfaces;
 using WCCB.Models;
 using WCCB.WebApplication.Areas.Administration.Models;
 using WCCB.WebApplication.Controllers;
+using WCCB.WebApplication.Models.Shared;
 
 namespace WCCB.WebApplication.Areas.Administration.Controllers
 {
@@ -13,12 +14,14 @@ namespace WCCB.WebApplication.Areas.Administration.Controllers
     public class UserController : ApplicationController
     {
         private readonly IUserRepository _userRepository;
+        private readonly IRoleRepository _roleRepository;
 
         #region Constructors
 
         public UserController()
         {
             _userRepository = new UserRepository();
+            _roleRepository = new RoleRepository();
         }
 
         #endregion
@@ -56,19 +59,31 @@ namespace WCCB.WebApplication.Areas.Administration.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            var model = new UserCreateViewModel
+                            {
+                                User = new User(),
+                                UserProfile = new UserProfile(),
+                                Roles = _roleRepository.FindAll().Select(x => new CheckBoxListItem
+                                                                                  {
+                                                                                      Text = x.Name,
+                                                                                      Value = Convert.ToString(x.RoleId),
+                                                                                      Selected = false
+                                                                                  })
+                            };
+            return View(model);
         }
 
         [HttpPost]
-        public ActionResult Create(User user)
+        public ActionResult Create(UserCreateViewModel model)
         {
             if (ModelState.IsValid)
             {
-                _userRepository.Create(user);
+                model.User.UserProfile = model.UserProfile;
+                _userRepository.Create(model.User);
                 return RedirectToAction("Index");
             }
 
-            return View(user);
+            return View(model);
         }
 
         #endregion

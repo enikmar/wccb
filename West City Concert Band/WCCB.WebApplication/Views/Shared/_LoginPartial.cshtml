@@ -1,7 +1,7 @@
 ﻿@if (Request.IsAuthenticated && ViewData.ContainsKey("UserName"))
 {
     <text>
-        @Html.ActionLink((string)(ViewData["UserName"]), "Detail", "User", new { id = (Guid)(ViewData["UserId"])}, new { @class="username"})
+        @Html.ActionLink((string)(ViewData["UserName"]), "Detail", "User", new { id = (Guid)(ViewData["UserId"]), area = ""}, new { @class="username"})
         @using (Html.BeginForm("LogOff", "User", new { @area = "" }, FormMethod.Post, new { id = "logoutForm" })) {
             @Html.AntiForgeryToken()
             <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>

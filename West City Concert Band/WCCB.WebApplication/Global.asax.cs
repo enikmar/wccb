@@ -15,7 +15,7 @@ namespace WCCB.WebApplication
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-            //Database.SetInitializer(new WccbContextInitializer());
+            Database.SetInitializer(new WccbContextInitializer());
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

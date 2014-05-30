@@ -1,3 +1,13 @@
 ﻿@model WCCB.Models.User
 
-User
+
+
+
+@using(Html.BeginForm())
+{
+    
+    <div class="editor-field">
+        <input id="import-file" type="file" name="file" />
+        <input type="submit" value="Submit" />       
+    </div>
+}
