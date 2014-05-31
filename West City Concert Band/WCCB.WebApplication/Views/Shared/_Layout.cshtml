@@ -21,40 +21,44 @@
                 </section>
                 <nav>
                     <ul id="menu">
-                        <li>@Html.ActionLink("Home", "Index", "Home", new { @area = ""}, null)</li>
-                        <li>@Html.ActionLink("About", "About", "Home", new { @area = ""}, null)
+                        <li>@Html.ActionLink("Home", "Index", "Home", new { @area = "" }, null)</li>
+                        <li>@Html.ActionLink("About", "About", "Home", new { @area = "" }, null)
                             <ul>
-                                <li>@Html.ActionLink("Musical Director", "About", "Home")</li>
-                                <li>@Html.ActionLink("Players", "About", "Home")</li>
-                                <li>@Html.ActionLink("Committee", "About", "Home")</li>
+                                <li>@Html.ActionLink("Musical Director", "About", "Home", new { @area = "" }, null)</li>
+                                <li>@Html.ActionLink("Players", "About", "Home", new { @area = "" }, null)</li>
+                                <li>@Html.ActionLink("Committee", "About", "Home", new { @area = "" }, null)</li>
                                 <!--  <li><a href="<?php bloginfo('url'); ?>/about/vision">Vision</a></li>-->
-                                <li>@Html.ActionLink("Constitution", "About", "Home")</li>
+                                <li>@Html.ActionLink("Constitution", "About", "Home", new { @area = "" }, null)</li>
                             </ul>
                         </li>
-                        <li>@Html.ActionLink("Youth", "Contact", "Home")
+                        <li>@Html.ActionLink("Youth", "Contact", "Home", new { @area = "" }, null)
                             <ul>
-                                <li>@Html.ActionLink("Open Band","About", "Home")</li>
-                                <li>@Html.ActionLink("Honour Band","About", "Home")</li>
-                                <li>@Html.ActionLink("Academy","About", "Home")</li>
+                                <li>@Html.ActionLink("Open Band", "About", "Home", new { @area = "" }, null)</li>
+                                <li>@Html.ActionLink("Honour Band", "About", "Home", new { @area = "" }, null)</li>
+                                <li>@Html.ActionLink("Academy", "About", "Home", new { @area = "" }, null)</li>
                             </ul>
                         </li>
-                        <li>@Html.ActionLink("Events", "Contact", "Home")</li>
-                        <li>@Html.ActionLink("News", "Contact", "Home")</li>
-                        <li>@Html.ActionLink("Gallery", "Contact", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                        @if(Request.IsAuthenticated)
-                        {                            
-                            if(User.IsInRole("Administrators"))
+                        <li>@Html.ActionLink("Events", "Contact", "Home", new { @area = "" }, null)</li>
+                        <li>@Html.ActionLink("News", "Contact", "Home", new { @area = "" }, null)</li>
+                        <li>@Html.ActionLink("Gallery", "Contact", "Home", new { @area = "" }, null)</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home", new { @area = "" }, null)</li>
+                        <li>@Html.ActionLink("Members", "Index", "Home", new { @area = "Member" }, null)
+                            @if (Request.IsAuthenticated)
                             {
-                                <li>@Html.ActionLink("Manage","Contact", "Home")
+                                if (User.IsInRole("Members"))
+                                {
                                     <ul>
-                                        <li>@Html.ActionLink("Users", "Index", "User", new { area = "Administration" }, null)</li>
-                                        <li>@Html.ActionLink("Roles", "Index", "Role", new { area = "Administration" }, null)</li>
-                                        <li>@Html.ActionLink("Members","Contact", "Home")</li>
+                                        <li>@Html.ActionLink("Notices", "Notices", "Home", new { @area = "Member" }, null)</li>
+                                        <li>@Html.ActionLink("Calendar", "Calendar", "Home", new { @area = "Member" }, null)</li>
+                                        @if (User.IsInRole("Players"))
+                                        {
+                                            <li>@Html.ActionLink("Technical Notes", "TechnicalNotes", "Player", new { @area = "Member" }, null)</li>
+                                        }
                                     </ul>
-                                </li>
+                                }
+
                             }
-                        }
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -64,7 +68,7 @@
     <div id="body">
         @if (!string.IsNullOrEmpty(ViewBag.Title))
         {
-            <div class="fullwidthbanner-container" style="background-color: lightgray; ">
+            <div class="fullwidthbanner-container" style="background-color: lightgray;">
                 <div class="content-wrapper">
                     <h2 style="margin: 10px">@ViewBag.Title</h2>
                 </div>

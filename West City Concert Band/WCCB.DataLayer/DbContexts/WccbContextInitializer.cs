@@ -1,6 +1,8 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Helpers;
+using WCCB.Helpers;
 using WCCB.Models;
 
 namespace WCCB.DataLayer.DbContexts
@@ -15,21 +17,28 @@ namespace WCCB.DataLayer.DbContexts
         protected override sealed void Seed(WccbContext context)
         {
 
-#if false
-		
-            var roleAdmin = context.Roles.Add(new Role { Name = "Administrators" });
-            var roleMember = context.Roles.Add(new Role { Name = "Members" });
-            context.SaveChanges();
+#if true
+            var roleAdministrators = new Role {Name = Enumerations.RoleTypes.Administrators.ToString()};
+            var roleCommiteeMembers = new Role { Name = Enumerations.RoleTypes.CommitteeMembers.ToString() };
+            var roleMembers = new Role { Name = Enumerations.RoleTypes.Members.ToString() };
+            var rolePlayers = new Role { Name = Enumerations.RoleTypes.Players.ToString() };
+            var roleSupporters = new Role { Name = Enumerations.RoleTypes.Supporters.ToString() };
+            context.Roles.Add(roleAdministrators);
+            context.Roles.Add(roleCommiteeMembers);
+            context.Roles.Add(roleMembers);
+            context.Roles.Add(rolePlayers);
+            context.Roles.Add(roleSupporters);
+            //context.SaveChanges();
 
             context.Users.Add(new User
                                   {
                                       Username = "lamara",
-                                      Password = Crypto.HashPassword("!3joe37T"),
-                                      Roles = { roleAdmin, roleMember },
+                                      Password = Crypto.HashPassword("lamara"),
+                                      Roles = { roleAdministrators, roleMembers, rolePlayers },
                                       UserProfile = new UserProfile
                                                         {
                                                             Firstname = "Lamar",
-                                                            Lastname = "Ah-chee",
+                                                            Lastname = "Ah-Chee",
                                                             Email = "lamara@westcityband.org"
                                                         }
                                   });
@@ -37,7 +46,7 @@ namespace WCCB.DataLayer.DbContexts
                                   {
                                       Username = "benh",
                                       Password = Crypto.HashPassword("benh"),
-                                      Roles = { roleMember },
+                                      Roles = { roleMembers, rolePlayers },
                                       UserProfile = new UserProfile
                                                         {
                                                             Firstname = "Ben",

@@ -187,6 +187,9 @@
     <Compile Include="Areas\Administration\Controllers\UserController.cs" />
     <Compile Include="Areas\Administration\Models\RoleViewModels.cs" />
     <Compile Include="Areas\Administration\Models\UserViewModels.cs" />
+    <Compile Include="Areas\Member\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Member\Controllers\PlayerController.cs" />
+    <Compile Include="Areas\Member\MemberAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApplicationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -209,6 +212,7 @@
     <Content Include="Content\fonts\champagne__limousines-webfont.svg" />
     <Content Include="Content\fonts\marcellus.regular-webfont.svg" />
     <Content Include="Content\fonts\opensans-light-webfont.svg" />
+    <Content Include="Content\kendo\WccbKendo.css" />
     <Content Include="Content\lightbox\lightbox.css" />
     <Content Include="Content\normalize.css" />
     <Content Include="Content\Site.css" />
@@ -295,6 +299,12 @@
     <Content Include="Areas\Administration\Views\Role\Create.cshtml" />
     <Content Include="Areas\Administration\Views\Role\Edit.cshtml" />
     <Content Include="Areas\Administration\Views\Role\Delete.cshtml" />
+    <Content Include="Areas\Member\Views\Web.config" />
+    <Content Include="Areas\Member\Views\Home\Notices.cshtml" />
+    <Content Include="Areas\Member\Views\Home\Home.cshtml" />
+    <Content Include="Areas\Member\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Member\Views\Home\Calendar.cshtml" />
+    <Content Include="Areas\Member\Views\Player\TechnicalNotes.cshtml" />
     <None Include="Properties\PublishProfiles\Release.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\slider1.jpg" />
@@ -364,6 +374,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Views\Shared\" />
+    <Folder Include="Areas\Member\Models\" />
+    <Folder Include="Areas\Member\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -372,6 +384,10 @@
     <ProjectReference Include="..\WCCB.DataLayer\WCCB.DataLayer.csproj">
       <Project>{a172a852-87ca-4b2c-8b73-7a30690639cb}</Project>
       <Name>WCCB.DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WCCB.Helpers\WCCB.Helpers.csproj">
+      <Project>{4567A9E8-F187-4A59-AE32-0AF24CEF64D6}</Project>
+      <Name>WCCB.Helpers</Name>
     </ProjectReference>
     <ProjectReference Include="..\WCCB.Models\WCCB.Models.csproj">
       <Project>{5fd011d1-092d-48ae-80ef-d84ec16270d1}</Project>

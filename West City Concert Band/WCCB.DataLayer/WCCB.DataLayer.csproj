@@ -66,6 +66,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WCCB.Helpers\WCCB.Helpers.csproj">
+      <Project>{4567A9E8-F187-4A59-AE32-0AF24CEF64D6}</Project>
+      <Name>WCCB.Helpers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WCCB.Models\WCCB.Models.csproj">
       <Project>{5fd011d1-092d-48ae-80ef-d84ec16270d1}</Project>
       <Name>WCCB.Models</Name>

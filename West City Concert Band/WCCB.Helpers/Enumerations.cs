@@ -8,7 +8,7 @@ namespace WCCB.Helpers
 {
     public class Enumerations
     {
-        public enum PreferredContactType
+        public enum PreferredContactTypes
         {
             Email,
             Post,
@@ -16,5 +16,15 @@ namespace WCCB.Helpers
             Txt,
             Facebook
         }
+
+        public enum RoleTypes
+        {
+            Administrators,
+            CommitteeMembers,
+            Players,
+            Members,
+            Supporters
+        }
+
     }
 }

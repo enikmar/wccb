@@ -5,6 +5,8 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WCCB.DataLayer.Repositories;
+using WCCB.DataLayer.Repositories.Interfaces;
 using WCCB.Models;
 using WCCB.DataLayer.DbContexts;
 using WCCB.WebApplication.Controllers;
@@ -14,39 +16,44 @@ namespace WCCB.WebApplication.Areas.Administration.Controllers
     [Authorize(Roles = "Administrators")]
     public class RoleController : ApplicationController
     {
-        private WccbContext db = new WccbContext();
+        private readonly IRoleRepository _roleRepository;
+        private readonly IUserRepository _userRepository;
 
-        //
-        // GET: /Administration/Role/
+        #region Constructors
+
+        public RoleController()
+        {
+            _roleRepository = new RoleRepository();
+            _userRepository = new UserRepository();
+        }
+        
+        #endregion
+
+        #region Index
 
         public ActionResult Index()
         {
-            return View(db.Roles.ToList());
+            return View(_roleRepository.FindAll());
         }
+        
+        #endregion
 
-        //
-        // GET: /Administration/Role/Details/5
+        #region Details
 
-        public ActionResult Details(long id = 0)
+        public ActionResult Details(long id)
         {
-            Role role = db.Roles.Find(id);
-            if (role == null)
-            {
-                return HttpNotFound();
-            }
+            var role = _roleRepository.FindById(id);
             return View(role);
         }
+        
+        #endregion
 
-        //
-        // GET: /Administration/Role/Create
+        #region Create
 
         public ActionResult Create()
         {
             return View();
         }
-
-        //
-        // POST: /Administration/Role/Create
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -54,29 +61,26 @@ namespace WCCB.WebApplication.Areas.Administration.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Roles.Add(role);
-                db.SaveChanges();
+                _roleRepository.Create(role);
                 return RedirectToAction("Index");
             }
 
             return View(role);
         }
 
-        //
-        // GET: /Administration/Role/Edit/5
+        #endregion
 
-        public ActionResult Edit(long id = 0)
+        #region Edit
+
+        public ActionResult Edit(long id)
         {
-            Role role = db.Roles.Find(id);
+            var role = _roleRepository.FindById(id);
             if (role == null)
             {
                 return HttpNotFound();
             }
             return View(role);
         }
-
-        //
-        // POST: /Administration/Role/Edit/5
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -84,19 +88,19 @@ namespace WCCB.WebApplication.Areas.Administration.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(role).State = EntityState.Modified;
-                db.SaveChanges();
+                _roleRepository.Update(role);
                 return RedirectToAction("Index");
             }
             return View(role);
         }
 
-        //
-        // GET: /Administration/Role/Delete/5
+        #endregion
 
-        public ActionResult Delete(long id = 0)
+        #region Delete
+
+        public ActionResult Delete(long id)
         {
-            Role role = db.Roles.Find(id);
+            var role = _roleRepository.FindById(id);
             if (role == null)
             {
                 return HttpNotFound();
@@ -104,23 +108,24 @@ namespace WCCB.WebApplication.Areas.Administration.Controllers
             return View(role);
         }
 
-        //
-        // POST: /Administration/Role/Delete/5
-
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(long id)
         {
-            Role role = db.Roles.Find(id);
-            db.Roles.Remove(role);
-            db.SaveChanges();
+            _roleRepository.Delete(id);
             return RedirectToAction("Index");
         }
+        
+        #endregion
+
+        #region Dispose
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            _roleRepository.Dispose();
             base.Dispose(disposing);
         }
+        
+        #endregion
     }
 }
