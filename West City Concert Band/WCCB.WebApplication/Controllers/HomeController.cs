@@ -17,7 +17,7 @@ namespace WCCB.WebApplication.Controllers
 
         #endregion
 
-        #region About Section
+        #region About Menu
 
         public ActionResult About()
         {
@@ -46,9 +46,49 @@ namespace WCCB.WebApplication.Controllers
 
         #endregion
 
+        #region Youth Menu
+
+        public ActionResult Youth()
+        {
+            return View();
+        }
+        
+        #endregion
+
+        #region Events Menu
+
+        public ActionResult Events()
+        {
+            return View();
+        }
+
+        #endregion
+
+        #region News Menu
+
+        public ActionResult News()
+        {
+            return View();
+        }
+        
+        #endregion
+
+        #region Gallery Menu
+
+        public ActionResult Gallery()
+        {
+            return View();
+        }
+        
+        #endregion
+
+        #region Contact Menu
+
         public ActionResult Contact()
         {
             return View();
         }
+        
+        #endregion
     }
 }
