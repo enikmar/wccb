@@ -24,11 +24,10 @@
                         <li>@Html.ActionLink("Home", "Index", "Home", new { @area = "" }, null)</li>
                         <li>@Html.ActionLink("About", "About", "Home", new { @area = "" }, null)
                             <ul>
-                                <li>@Html.ActionLink("Musical Director", "About", "Home", new { @area = "" }, null)</li>
-                                <li>@Html.ActionLink("Players", "About", "Home", new { @area = "" }, null)</li>
-                                <li>@Html.ActionLink("Committee", "About", "Home", new { @area = "" }, null)</li>
-                                <!--  <li><a href="<?php bloginfo('url'); ?>/about/vision">Vision</a></li>-->
-                                <li>@Html.ActionLink("Constitution", "About", "Home", new { @area = "" }, null)</li>
+                                <li>@Html.ActionLink("Musical Director", "MusicalDirector", "Home", new { @area = "" }, null)</li>
+                                <li>@Html.ActionLink("Players", "Players", "Home", new { @area = "" }, null)</li>
+                                <li>@Html.ActionLink("Committee", "Committee", "Home", new { @area = "" }, null)</li>
+                                <li>@Html.ActionLink("Constitution", "Constitution", "Home", new { @area = "" }, null)</li>
                             </ul>
                         </li>
                         <li>@Html.ActionLink("Youth", "Contact", "Home", new { @area = "" }, null)

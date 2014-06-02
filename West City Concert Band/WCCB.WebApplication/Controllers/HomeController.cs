@@ -17,9 +17,29 @@ namespace WCCB.WebApplication.Controllers
 
         #endregion
 
-        #region About
+        #region About Section
 
         public ActionResult About()
+        {
+            return View();
+        }
+        
+        public ActionResult MusicalDirector()
+        {
+            return View();
+        }
+
+        public ActionResult Players()
+        {
+            return View();
+        }
+
+        public ActionResult Committee()
+        {
+            return View();
+        }
+
+        public ActionResult Constitution()
         {
             return View();
         }
@@ -28,8 +48,6 @@ namespace WCCB.WebApplication.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }

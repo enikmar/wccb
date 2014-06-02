@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Providers\WccbMembershipProvider.cs" />
     <Compile Include="Providers\WccbRoleProvider.cs" />
+    <Compile Include="Repositories\PlayerRepository.cs" />
     <Compile Include="Repositories\Interfaces\IGenericRepository.cs" />
     <Compile Include="Repositories\Interfaces\IRoleRepository.cs" />
     <Compile Include="Repositories\Interfaces\IUserRepository.cs" />

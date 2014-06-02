@@ -307,6 +307,7 @@
     <Content Include="Areas\Member\Views\Player\TechnicalNotes.cshtml" />
     <None Include="Properties\PublishProfiles\Release.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Images\conductor2014.jpg" />
     <Content Include="Images\slider1.jpg" />
     <Content Include="Images\slider2.jpg" />
     <Content Include="Images\wccb.png" />
@@ -370,6 +371,10 @@
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\User\Detail.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\CheckBoxListItem.cshtml" />
+    <Content Include="Views\Home\MusicalDirector.cshtml" />
+    <Content Include="Views\Home\Players.cshtml" />
+    <Content Include="Views\Home\Committee.cshtml" />
+    <Content Include="Views\Home\Constitution.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
