@@ -8,7 +8,7 @@ using WCCB.WebApplication.Controllers;
 
 namespace WCCB.WebApplication.Areas.Member.Controllers
 {
-    [Authorize(Roles = "Members, Administrators")]
+    [Authorize(Roles = "PlayingMembers, NonPlayingMembers, LifeMembers, Administrators")]
     public class HomeController : ApplicationController
     {
         public ActionResult Index()
@@ -21,7 +21,7 @@ namespace WCCB.WebApplication.Areas.Member.Controllers
             return View();
         }
 
-        public ActionResult Calendar()
+        public ActionResult Subscription()
         {
             return View();
         }

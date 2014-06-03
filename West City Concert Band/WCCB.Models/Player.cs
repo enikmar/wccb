@@ -16,5 +16,6 @@ namespace WCCB.Models
         public int? Part { get; set; }
         public string Section { get; set; }
         public bool IsLeader { get; set; }
+        public bool IsActive { get; set; }
     }
 }

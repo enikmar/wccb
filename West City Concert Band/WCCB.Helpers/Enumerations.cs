@@ -21,9 +21,9 @@ namespace WCCB.Helpers
         {
             Administrators,
             CommitteeMembers,
-            Players,
-            Members,
-            Supporters
+            PlayingMembers,
+            NonPlayingMembers,
+            LifeMembers,
         }
 
     }

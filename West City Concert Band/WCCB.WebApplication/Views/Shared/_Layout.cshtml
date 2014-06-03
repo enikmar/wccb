@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>WCCB | @ViewBag.Title</title>
+    <title>WCCB| @ViewBag.Title</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
     @RenderSection("styles", required: false)
@@ -44,15 +44,26 @@
                         <li>@Html.ActionLink("Members", "Index", "Home", new { @area = "Member" }, null)
                             @if (Request.IsAuthenticated)
                             {
-                                if (User.IsInRole("Members"))
+                                if (User.IsInRole("PlayingMembers") || User.IsInRole("NonPlayingMembers") || User.IsInRole("LifeMembers"))
                                 {
                                     <ul>
                                         <li>@Html.ActionLink("Notices", "Notices", "Home", new { @area = "Member" }, null)</li>
-                                        <li>@Html.ActionLink("Calendar", "Calendar", "Home", new { @area = "Member" }, null)</li>
-                                        @if (User.IsInRole("Players"))
+                                        <li>@Html.ActionLink("Subscription", "Subscription", "Home", new { @area = "Member" }, null)</li>
+
+                                        @if (User.IsInRole("PlayingMembers"))
                                         {
+                                            <li>@Html.ActionLink("Calendar", "Calendar", "Player", new { @area = "Member" }, null)</li>
                                             <li>@Html.ActionLink("Technical Notes", "TechnicalNotes", "Player", new { @area = "Member" }, null)</li>
+                                            <li>@Html.ActionLink("Player List", "PlayerList", "Player", new { @area = "Member" }, null)</li>
+                                            <li>@Html.ActionLink("Resources", "Resources", "Player", new { @area = "Member" }, null)</li>
+                                            <li>@Html.ActionLink("Contact", "Contact", "Player", new { @area = "Member" }, null)</li>
                                         }
+                                        
+                                        @if (User.IsInRole("NonPlayingMembers") || User.IsInRole("LifeMembers"))
+                                        {
+                                            <li>@Html.ActionLink("Benefits", "Benefits", "NonPlayer", new { @area = "Member" }, null)</li>
+                                        }
+                                        
                                     </ul>
                                 }
                             }

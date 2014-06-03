@@ -188,6 +188,7 @@
     <Compile Include="Areas\Administration\Models\RoleViewModels.cs" />
     <Compile Include="Areas\Administration\Models\UserViewModels.cs" />
     <Compile Include="Areas\Member\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Member\Controllers\NonPlayerController.cs" />
     <Compile Include="Areas\Member\Controllers\PlayerController.cs" />
     <Compile Include="Areas\Member\MemberAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -303,8 +304,13 @@
     <Content Include="Areas\Member\Views\Home\Notices.cshtml" />
     <Content Include="Areas\Member\Views\Home\Home.cshtml" />
     <Content Include="Areas\Member\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Member\Views\Home\Calendar.cshtml" />
     <Content Include="Areas\Member\Views\Player\TechnicalNotes.cshtml" />
+    <Content Include="Areas\Member\Views\Player\Calendar.cshtml" />
+    <Content Include="Areas\Member\Views\Player\PlayerList.cshtml" />
+    <Content Include="Areas\Member\Views\Player\Resources.cshtml" />
+    <Content Include="Areas\Member\Views\Home\Subscription.cshtml" />
+    <Content Include="Areas\Member\Views\Player\Contact.cshtml" />
+    <Content Include="Areas\Member\Views\NonPlayer\Benefits.cshtml" />
     <None Include="Properties\PublishProfiles\Release.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\conductor2014.jpg" />

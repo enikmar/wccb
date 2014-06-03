@@ -17,24 +17,24 @@ namespace WCCB.DataLayer.DbContexts
         protected override sealed void Seed(WccbContext context)
         {
 
-#if false
+#if true
             var roleAdministrators = new Role {Name = Enumerations.RoleTypes.Administrators.ToString()};
             var roleCommiteeMembers = new Role { Name = Enumerations.RoleTypes.CommitteeMembers.ToString() };
-            var roleMembers = new Role { Name = Enumerations.RoleTypes.Members.ToString() };
-            var rolePlayers = new Role { Name = Enumerations.RoleTypes.Players.ToString() };
-            var roleSupporters = new Role { Name = Enumerations.RoleTypes.Supporters.ToString() };
+            var rolePlayingMembers = new Role { Name = Enumerations.RoleTypes.PlayingMembers.ToString() };
+            var roleNonPlayingMembers = new Role { Name = Enumerations.RoleTypes.NonPlayingMembers.ToString() };
+            var roleLifeMembers = new Role { Name = Enumerations.RoleTypes.LifeMembers.ToString() };
             context.Roles.Add(roleAdministrators);
             context.Roles.Add(roleCommiteeMembers);
-            context.Roles.Add(roleMembers);
-            context.Roles.Add(rolePlayers);
-            context.Roles.Add(roleSupporters);
+            context.Roles.Add(rolePlayingMembers);
+            context.Roles.Add(roleNonPlayingMembers);
+            context.Roles.Add(roleLifeMembers);
             //context.SaveChanges();
 
             context.Users.Add(new User
                                   {
                                       Username = "lamara",
                                       Password = Crypto.HashPassword("lamara"),
-                                      Roles = { roleAdministrators, roleMembers, rolePlayers },
+                                      Roles = { roleAdministrators, rolePlayingMembers },
                                       UserProfile = new UserProfile
                                                         {
                                                             Firstname = "Lamar",
@@ -46,7 +46,7 @@ namespace WCCB.DataLayer.DbContexts
                                   {
                                       Username = "benh",
                                       Password = Crypto.HashPassword("benh"),
-                                      Roles = { roleMembers, rolePlayers },
+                                      Roles = { rolePlayingMembers },
                                       UserProfile = new UserProfile
                                                         {
                                                             Firstname = "Ben",

@@ -7,15 +7,32 @@ using WCCB.WebApplication.Controllers;
 
 namespace WCCB.WebApplication.Areas.Member.Controllers
 {
+    [Authorize(Roles = "PlayingMembers, Administrators")]
     public class PlayerController : ApplicationController
     {
-        //
-        // GET: /Member/Player/
-
         public ActionResult TechnicalNotes()
         {
             return View();
         }
+        
+        public ActionResult Calendar()
+        {
+            return View();
+        }
 
+        public ActionResult PlayerList()
+        {
+            return View();
+        }
+
+        public ActionResult Resources()
+        {
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            return View();
+        }
     }
 }
