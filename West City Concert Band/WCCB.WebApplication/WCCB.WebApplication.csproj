@@ -183,6 +183,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
+    <Compile Include="Areas\Administration\Controllers\PlayerController.cs" />
     <Compile Include="Areas\Administration\Controllers\RoleController.cs" />
     <Compile Include="Areas\Administration\Controllers\UserController.cs" />
     <Compile Include="Areas\Administration\Models\RoleViewModels.cs" />
@@ -312,6 +313,11 @@
     <Content Include="Areas\Member\Views\Player\Contact.cshtml" />
     <Content Include="Areas\Member\Views\NonPlayer\Benefits.cshtml" />
     <Content Include="Content\Public\Committee\Constitution.pdf" />
+    <Content Include="Areas\Administration\Views\Player\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Player\Details.cshtml" />
+    <Content Include="Areas\Administration\Views\Player\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\Player\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\Player\Delete.cshtml" />
     <None Include="Properties\PublishProfiles\Release.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\conductor2014.jpg" />

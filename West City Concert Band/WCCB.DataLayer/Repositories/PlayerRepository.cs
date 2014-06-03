@@ -9,7 +9,7 @@ using WCCB.Models;
 
 namespace WCCB.DataLayer.Repositories
 {
-    public class PlayerRepository : GenericRepository<Player>
+    public class PlayerRepository : GenericRepository<Player>, IPlayerRepository
     {
         
         

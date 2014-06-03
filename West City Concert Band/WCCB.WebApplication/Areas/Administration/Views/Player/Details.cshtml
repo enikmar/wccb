@@ -1,0 +1,50 @@
+﻿@model WCCB.Models.Player
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Player</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UserId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Instrument)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Instrument)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Part)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Part)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Section)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Section)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IsLeader)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IsLeader)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.PlayerId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
