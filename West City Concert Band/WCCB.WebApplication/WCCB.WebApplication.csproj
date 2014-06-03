@@ -311,6 +311,7 @@
     <Content Include="Areas\Member\Views\Home\Subscription.cshtml" />
     <Content Include="Areas\Member\Views\Player\Contact.cshtml" />
     <Content Include="Areas\Member\Views\NonPlayer\Benefits.cshtml" />
+    <Content Include="Content\Public\Committee\Constitution.pdf" />
     <None Include="Properties\PublishProfiles\Release.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\conductor2014.jpg" />
