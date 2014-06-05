@@ -5,9 +5,16 @@
 }
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", "Role", null, new { @class = "k-button" })
 </p>
-<table>
+
+@(Html.Kendo().Grid<WCCB.Models.Role>()
+    .Name("grid")
+    .Pageable()
+    .BindTo(Model)    
+)
+
+@*<table>
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -28,4 +35,4 @@
     </tr>
 }
 
-</table>
+</table>*@
