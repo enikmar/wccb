@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Helpers;
 using System.Web.Mvc;
 using WCCB.DataLayer.DbContexts;
 using WCCB.DataLayer.Providers;
 using WCCB.DataLayer.Repositories;
 using WCCB.DataLayer.Repositories.Interfaces;
+using WCCB.Helpers;
 using WCCB.Models;
 using WCCB.WebApplication.Models;
 using WebMatrix.WebData;
@@ -70,7 +72,14 @@ namespace WCCB.WebApplication.Controllers
         public ActionResult Detail(Guid id)
         {
             var user = _userRepository.FindById(id);
-            return View(user);
+            var model = new UserDetailModel
+                            {
+                                IsAdministrator =
+                                    user.Roles.ToList().Select(x => x.Name).Contains(
+                                        Enumerations.RoleTypes.Administrators.ToString()),
+                                User = user,
+                            };
+            return View(model);
         }
 
         #endregion

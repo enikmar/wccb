@@ -45,8 +45,8 @@ namespace WCCB.WebApplication
 
             bundles.Add(new StyleBundle("~/Content/kendo/css").Include(
                 "~/Content/kendo/kendo.common.min.css",
-                //"~/Content/kendo/kendo.default.min.css"
-                "~/Content/kendo/WccbKendo.css"
+                "~/Content/kendo/kendo.default.min.css"
+                //"~/Content/kendo/WccbKendo.css"
                 ));
 
             bundles.IgnoreList.Clear();

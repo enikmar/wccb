@@ -1,41 +1,31 @@
-﻿@model WCCB.Models.User
+﻿@model WCCB.WebApplication.Models.UserDetailModel
+
 
 @(Html.Kendo().TabStrip()
     .Name("strip")
     .Items(tabstrip =>
-          {
-              tabstrip.Add().Text(string.Format("{0}{1}",Model.UserProfile.Firstname, Model.UserProfile.Lastname))
-                  .Selected(true)
-                  .Content(@<text>
-                                Here
-                            </text>);
-              tabstrip.Add().Text("Adminstration")
-                  .Content(@<text>
-                                @Html.ActionLink("Users", "Index", "User", new { area = "Administration" }, new { @class = "k-button" }) <br/>
-                                @Html.ActionLink("Roles", "Index", "Role", new { area = "Administration" }, new { @class = "k-button" }) <br/>
-                                @Html.ActionLink("Members", "Contact", "Home", null , new { @class = "k-button" })
-                            </text>);
-          })
-    
+        {
+            tabstrip.Add().Text(string.Format("{0}{1}",Model.User.UserProfile.Firstname, Model.User.UserProfile.Lastname))
+                .Selected(true)
+                .Content(@<text>
+                            @Html.Partial("Profile", Model.User)
+                        </text>);
+            tabstrip.Add().Text("Administration")
+                .Content(@<text>
+                            @Html.ActionLink("Users", "Index", "User", new {area = "Administration"}, new {@class = "k-button"}) <br/>
+                            @Html.ActionLink("Roles", "Index", "Role", new {area = "Administration"}, new {@class = "k-button"}) <br/>
+                            @Html.ActionLink("Members", "Contact", "Home", null, new {@class = "k-button"})
+                        </text>);
+        })
       )
       
-
-@*<h3>Administrators Functions</h3>
-@if (User.IsInRole("Administrators"))
+@section scripts
 {
-    @Html.ActionLink("Users", "Index", "User", new { area = "Administration" }, null) <br/>
-    @Html.ActionLink("Roles", "Index", "Role", new { area = "Administration" }, null) <br/>
-    @Html.ActionLink("Members", "Contact", "Home")
+    <script>
+        $(document).ready(function () {
+            if('@Model.IsAdministrator' != "True") {
+                $("li[aria-controls='strip-2']").hide();
+            }
+        });
+    </script>
 }
-
-
-
-@using(Html.BeginForm())
-{
-    
-    <div class="editor-field">
-        <input id="import-file" type="file" name="file" />
-        <input type="submit" value="Submit" />       
-    </div>
-}
-*@
