@@ -1,6 +1,26 @@
 ﻿@model WCCB.Models.User
 
-<h3>Administrators Functions</h3>
+@(Html.Kendo().TabStrip()
+    .Name("strip")
+    .Items(tabstrip =>
+          {
+              tabstrip.Add().Text(string.Format("{0}{1}",Model.UserProfile.Firstname, Model.UserProfile.Lastname))
+                  .Selected(true)
+                  .Content(@<text>
+                                Here
+                            </text>);
+              tabstrip.Add().Text("Adminstration")
+                  .Content(@<text>
+                                @Html.ActionLink("Users", "Index", "User", new { area = "Administration" }, new { @class = "k-button" }) <br/>
+                                @Html.ActionLink("Roles", "Index", "Role", new { area = "Administration" }, new { @class = "k-button" }) <br/>
+                                @Html.ActionLink("Members", "Contact", "Home", null , new { @class = "k-button" })
+                            </text>);
+          })
+    
+      )
+      
+
+@*<h3>Administrators Functions</h3>
 @if (User.IsInRole("Administrators"))
 {
     @Html.ActionLink("Users", "Index", "User", new { area = "Administration" }, null) <br/>
@@ -9,11 +29,13 @@
 }
 
 
-@*@using(Html.BeginForm())
+
+@using(Html.BeginForm())
 {
     
     <div class="editor-field">
         <input id="import-file" type="file" name="file" />
         <input type="submit" value="Submit" />       
     </div>
-}*@
+}
+*@

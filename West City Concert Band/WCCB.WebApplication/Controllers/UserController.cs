@@ -54,6 +54,7 @@ namespace WCCB.WebApplication.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult LogOff()
         {
             WebSecurity.Logout();
@@ -65,6 +66,7 @@ namespace WCCB.WebApplication.Controllers
 
         #region Details
 
+        [Authorize]
         public ActionResult Detail(Guid id)
         {
             var user = _userRepository.FindById(id);

@@ -9,7 +9,7 @@ namespace WCCB.WebApplication
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-1.9.1.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                         "~/Scripts/jquery-ui-{version}.js"));
@@ -45,8 +45,9 @@ namespace WCCB.WebApplication
 
             bundles.Add(new StyleBundle("~/Content/kendo/css").Include(
                 "~/Content/kendo/kendo.common.min.css",
-                //"~/Content/kendo/kendo.default.min.css",
-                "~/Content/kendo/WccbKendo.css"));
+                //"~/Content/kendo/kendo.default.min.css"
+                "~/Content/kendo/WccbKendo.css"
+                ));
 
             bundles.IgnoreList.Clear();
         }
