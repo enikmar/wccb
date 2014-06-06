@@ -22,7 +22,13 @@
                  })
     .Columns(col =>
         {
-            col.Bound(u => u.Name);
+            col.Bound(u => u.UserId).ClientTemplate("" +
+                                                    "# if(ImagePath == null) { #" +
+                                                    "   <img src='/Images/profile-default.png' width='100'/>" +
+                                                    "# } else { #" +
+                                                    "   <img src='#=ImagePath#' width='100'/>" +
+                                                    "# } #").Title("").Width(100);
+            col.Bound(u => u.Name).Width(150); ;
             col.Bound(u => u.Username);
             col.Bound(u => u.Roles).ClientTemplate("#=Roles#");
             

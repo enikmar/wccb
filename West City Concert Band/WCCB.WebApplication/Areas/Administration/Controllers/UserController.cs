@@ -179,7 +179,8 @@ namespace WCCB.WebApplication.Areas.Administration.Controllers
                     UserId = user.UserId,
                     Username = user.Username,
                     Name = string.Format("{0} {1}", user.UserProfile.Firstname, user.UserProfile.Lastname),
-                    Roles = string.Join("<br/>", user.Roles.Select(x => x.Name))
+                    Roles = string.Join("<br/>", user.Roles.Select(x => x.Name)),
+                    ImagePath = user.UserProfile.ImgagePath
                 };
         }
 
