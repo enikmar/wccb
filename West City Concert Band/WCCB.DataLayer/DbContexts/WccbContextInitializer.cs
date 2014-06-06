@@ -39,7 +39,8 @@ namespace WCCB.DataLayer.DbContexts
                                                         {
                                                             Firstname = "Lamar",
                                                             Lastname = "Ah-Chee",
-                                                            Email = "lamara@westcityband.org"
+                                                            Email = "lamara@westcityband.org",
+                                                            Gender = Enumerations.GenderTypes.Male.ToString()
                                                         }
                                   });
             context.Users.Add(new User
@@ -51,7 +52,8 @@ namespace WCCB.DataLayer.DbContexts
                                                         {
                                                             Firstname = "Ben",
                                                             Lastname = "Harrington",
-                                                            Email = "benh@westcityband.org"
+                                                            Email = "benh@westcityband.org",
+                                                            Gender = Enumerations.GenderTypes.Male.ToString()
                                                         },
                                   });
 

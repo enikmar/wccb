@@ -26,5 +26,10 @@ namespace WCCB.Helpers
             LifeMembers,
         }
 
+        public enum GenderTypes
+        {
+            Male,
+            Female
+        }
     }
 }
