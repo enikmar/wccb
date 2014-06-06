@@ -1,63 +1,31 @@
-﻿@model IEnumerable<WCCB.WebApplication.Areas.Administration.Models.UserViewModel>
-
-@{
+﻿@{
     ViewBag.Title = "Users";
 }
 
-<style>
-    th,td {
-        padding-right: 20px;
-    }
-</style>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.User.UserProfile.Firstname)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.User.UserProfile.Lastname)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.User.Username)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.User.Created)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.User.Updated)
-        </th>
-        <th>
-            Actions
-        </th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.User.UserProfile.Firstname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.User.UserProfile.Lastname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.User.Username)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.User.Created)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.User.Updated)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.User.UserId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.User.UserId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.User.UserId })
-        </td>
-    </tr>
-}
-
-</table>
+@(Html.Kendo().Grid<UserGridModel>()
+    .Name("grid-users")
+    .DataSource(ds => ds
+        .Ajax()
+        .Model(m =>
+                   {
+                       m.Id(u => u.UserId);
+                   })
+        .Read("GetUsers", "User", new { @area = "Administration" })
+        
+        )
+        .Pageable()
+    .ToolBar(tbar =>
+                 {
+                     tbar.Template(@<text>
+                                        @Html.ActionLink("Create New", "Create", "User", null, new { @class = "k-button" })
+                                    </text>);
+                 })
+    .Columns(col =>
+        {
+            col.Bound(u => u.Name);
+            col.Bound(u => u.Username);
+            col.Bound(u => u.Roles).ClientTemplate("#=Roles#");
+            
+        })
+    
+      )

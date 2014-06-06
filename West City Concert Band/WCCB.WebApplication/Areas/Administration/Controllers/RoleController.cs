@@ -65,7 +65,7 @@ namespace WCCB.WebApplication.Areas.Administration.Controllers
             if (ModelState.IsValid)
             {
                 _roleRepository.Create(role);
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home", new { @area = "Administration" });
             }
 
             return View(role);
@@ -92,7 +92,7 @@ namespace WCCB.WebApplication.Areas.Administration.Controllers
             if (ModelState.IsValid)
             {
                 _roleRepository.Update(role);
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home", new { @area = "Administration" });
             }
             return View(role);
         }
@@ -116,7 +116,7 @@ namespace WCCB.WebApplication.Areas.Administration.Controllers
         public ActionResult DeleteConfirmed(long id)
         {
             _roleRepository.Delete(id);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home", new { @area = "Administration" });
         }
         
         #endregion
@@ -136,11 +136,11 @@ namespace WCCB.WebApplication.Areas.Administration.Controllers
         public ActionResult GetRoles([DataSourceRequest]DataSourceRequest request)
         {
             var roles = _roleRepository.FindAll().Select(x => new RoleGridModel
-                                                                  {
-                                                                      RoleId = x.RoleId,
-                                                                      Name = x.Name,
-                                                                      UserCount = x.Users.Count
-                                                                  });
+                {
+                    RoleId = x.RoleId,
+                    Name = x.Name,
+                    UserCount = x.Users.Count
+                });
             return Json(roles.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 

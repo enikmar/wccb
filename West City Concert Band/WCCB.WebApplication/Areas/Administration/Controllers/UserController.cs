@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
+using Kendo.Mvc.Extensions;
+using Kendo.Mvc.UI;
 using WCCB.DataLayer.Repositories;
 using WCCB.DataLayer.Repositories.Interfaces;
 using WCCB.Models;
@@ -156,5 +158,31 @@ namespace WCCB.WebApplication.Areas.Administration.Controllers
 
         #endregion
 
+        #region Kendo Ajax
+
+
+        public ActionResult GetUsers([DataSourceRequest]DataSourceRequest request)
+        {
+            var users = _userRepository.FindAll().ToList();
+            return Json(users.Select(_ToGridModel).ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+        }
+
+
+        #endregion
+
+        #region Helpers
+
+        private UserGridModel _ToGridModel(User user)
+        {
+            return new UserGridModel
+                {
+                    UserId = user.UserId,
+                    Username = user.Username,
+                    Name = string.Format("{0} {1}", user.UserProfile.Firstname, user.UserProfile.Lastname),
+                    Roles = string.Join("<br/>", user.Roles.Select(x => x.Name))
+                };
+        }
+
+        #endregion
     }
 }

@@ -3,7 +3,7 @@
 }
 
 @(Html.Kendo().Grid<RoleGridModel>()
-    .Name("grid")
+    .Name("grid-roles")
     .DataSource(ds => ds
         .Ajax()
         .Model(model =>
@@ -24,12 +24,10 @@
                  {
                      col.Bound(x => x.Name);
                      col.Bound(x => x.UserCount).Title("User Count");
-                     col.Template(@<text>
-                                       @if (item.UserCount <= 0)
-                                       {
-                                           @Html.ActionLink("Delete", "Delete", "Role", new {id = item.RoleId}, new { @class = "k-button" })
-                                       }
-                                   </text>).Title("Actions");
+                     col.Bound(x => x.RoleId).ClientTemplate("" +
+                                                             "# if (UserCount <= 0) { #" +
+                                                             "      <a class='k-button' href='Administration/Role/Delete/#=RoleId#'>Delete</a>" +
+                                                             "# } #" +
+                                                             "").Title("Actions");
                  })
       )
-     
