@@ -1,31 +1,14 @@
-﻿@model WCCB.WebApplication.Models.UserDetailModel
+﻿@model WCCB.Models.User
 
-
-@(Html.Kendo().TabStrip()
-    .Name("strip")
-    .Items(tabstrip =>
-        {
-            tabstrip.Add().Text(string.Format("{0}{1}",Model.User.UserProfile.Firstname, Model.User.UserProfile.Lastname))
-                .Selected(true)
-                .Content(@<text>
-                            @Html.Partial("Profile", Model.User)
-                        </text>);
-            tabstrip.Add().Text("Administration")
-                .Content(@<text>
-                            @Html.ActionLink("Users", "Index", "User", new {area = "Administration"}, new {@class = "k-button"}) <br/>
-                            @Html.ActionLink("Roles", "Index", "Role", new {area = "Administration"}, new {@class = "k-button"}) <br/>
-                            @Html.ActionLink("Members", "Contact", "Home", null, new {@class = "k-button"})
-                        </text>);
-        })
-      )
-      
-@section scripts
-{
-    <script>
-        $(document).ready(function () {
-            if('@Model.IsAdministrator' != "True") {
-                $("li[aria-controls='strip-2']").hide();
-            }
-        });
-    </script>
+@{
+    ViewBag.Title = "My Profile";
 }
+
+<h3>@string.Format("{0} {1}", Model.UserProfile.Firstname, Model.UserProfile.Lastname)</h3>
+
+<div class="profile_picture left">
+    
+</div>
+<div class="right">
+    
+</div>

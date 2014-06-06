@@ -5,10 +5,13 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Kendo.Mvc.Extensions;
+using Kendo.Mvc.UI;
 using WCCB.DataLayer.Repositories;
 using WCCB.DataLayer.Repositories.Interfaces;
 using WCCB.Models;
 using WCCB.DataLayer.DbContexts;
+using WCCB.WebApplication.Areas.Administration.Models;
 using WCCB.WebApplication.Controllers;
 
 namespace WCCB.WebApplication.Areas.Administration.Controllers
@@ -127,5 +130,21 @@ namespace WCCB.WebApplication.Areas.Administration.Controllers
         }
         
         #endregion
+        
+        #region Kendo Ajax
+
+        public ActionResult GetRoles([DataSourceRequest]DataSourceRequest request)
+        {
+            var roles = _roleRepository.FindAll().Select(x => new RoleGridModel
+                                                                  {
+                                                                      RoleId = x.RoleId,
+                                                                      Name = x.Name,
+                                                                      UserCount = x.Users.Count
+                                                                  });
+            return Json(roles.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+        }
+
+        #endregion
+
     }
 }

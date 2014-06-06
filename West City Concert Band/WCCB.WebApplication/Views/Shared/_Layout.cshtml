@@ -49,6 +49,11 @@
                                 if (User.IsInRole("PlayingMembers") || User.IsInRole("NonPlayingMembers") || User.IsInRole("LifeMembers"))
                                 {
                                     <ul>
+                                        @if(User.IsInRole("Administrators"))
+                                        {
+                                            <li>@Html.ActionLink("Administration","Index","Home", new { @area = "Administration" }, null)</li>
+                                        }
+
                                         <li>@Html.ActionLink("Notices", "Notices", "Home", new { @area = "Member" }, null)</li>
                                         <li>@Html.ActionLink("Subscription", "Subscription", "Home", new { @area = "Member" }, null)</li>
 

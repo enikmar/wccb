@@ -1,13 +1,19 @@
-﻿@model IEnumerable<WCCB.Models.Role>
-
-@{
+﻿@{
     ViewBag.Title = "Roles";
 }
 
-@(Html.Kendo().Grid<WCCB.Models.Role>()
+@(Html.Kendo().Grid<RoleGridModel>()
     .Name("grid")
-    .Pageable()
-    .BindTo(Model)
+    .DataSource(ds => ds
+        .Ajax()
+        .Model(model =>
+                   {
+                       model.Id(role => role.RoleId);
+                   })
+        .Read("GetRoles", "Role", new { @area = "Administration" })
+        
+        )
+        .Pageable()
     .ToolBar(tbar =>
                  {
                      tbar.Template(@<text>
@@ -17,13 +23,13 @@
     .Columns(col =>
                  {
                      col.Bound(x => x.Name);
-                     col.Bound(x => x.Users.Count).Title("Users");
+                     col.Bound(x => x.UserCount).Title("User Count");
                      col.Template(@<text>
-                                       @if (item.Users.Count <= 0)
+                                       @if (item.UserCount <= 0)
                                        {
                                            @Html.ActionLink("Delete", "Delete", "Role", new {id = item.RoleId}, new { @class = "k-button" })
                                        }
-                                       
                                    </text>).Title("Actions");
                  })
       )
+     

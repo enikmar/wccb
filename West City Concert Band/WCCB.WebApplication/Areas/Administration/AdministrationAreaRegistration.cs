@@ -17,9 +17,8 @@ namespace WCCB.WebApplication.Areas.Administration
             context.MapRoute(
                 "Administration_default",
                 "Administration/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional },
+                new { controller = "Home", action = "Index", id = UrlParameter.Optional },
                 namespaces: new[] { "WCCB.WebApplication.Areas.Administration.Controllers"}
-
             );
         }
     }

@@ -72,14 +72,7 @@ namespace WCCB.WebApplication.Controllers
         public ActionResult Detail(Guid id)
         {
             var user = _userRepository.FindById(id);
-            var model = new UserDetailModel
-                            {
-                                IsAdministrator =
-                                    user.Roles.ToList().Select(x => x.Name).Contains(
-                                        Enumerations.RoleTypes.Administrators.ToString()),
-                                User = user,
-                            };
-            return View(model);
+            return View(user);
         }
 
         #endregion

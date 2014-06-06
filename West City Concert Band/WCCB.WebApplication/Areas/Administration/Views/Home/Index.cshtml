@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Administration Area";
+}
+
+@(Html.Kendo().TabStrip()
+    .Name("tabstrip")
+    .Items(tab =>
+               {
+                   //tab.Add().Text("Users").Selected(true).Action("Index", "User", new { @area = "Administration" });
+                   tab.Add().Text("Roles")
+                       .Selected(true)
+                       .Content(@<text>
+                                    @Html.Partial("~/Areas/Administration/Views/Role/Index.cshtml")
+                                </text>);
+                   tab.Add().Text("Players");
+               })
+)
