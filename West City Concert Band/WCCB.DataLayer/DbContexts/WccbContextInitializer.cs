@@ -17,7 +17,7 @@ namespace WCCB.DataLayer.DbContexts
         protected override sealed void Seed(WccbContext context)
         {
 
-#if false
+#if true
             var roleAdministrators = new Role {Name = Enumerations.RoleTypes.Administrators.ToString()};
             var roleCommiteeMembers = new Role { Name = Enumerations.RoleTypes.CommitteeMembers.ToString() };
             var rolePlayingMembers = new Role { Name = Enumerations.RoleTypes.PlayingMembers.ToString() };
