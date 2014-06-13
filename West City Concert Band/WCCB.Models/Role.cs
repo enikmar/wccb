@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WCCB.Models
 {
-    [Table("wccb_Roles")]
+    [Table("Roles")]
     public class Role
     {
         public long RoleId { get; set; }

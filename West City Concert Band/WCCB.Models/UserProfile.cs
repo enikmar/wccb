@@ -9,7 +9,7 @@ using WCCB.Helpers;
 
 namespace WCCB.Models
 {
-    [Table("wccb_UserProfile")]
+    [Table("UserProfiles")]
     public class UserProfile
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

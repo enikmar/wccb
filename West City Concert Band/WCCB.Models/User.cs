@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WCCB.Models
 {
-    [Table("wccb_Users")]
+    [Table("Users")]
     public class User
     {
         public User()

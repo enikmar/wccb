@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WCCB.Models
 {
-    [Table("wccb_Players")]
+    [Table("Players")]
     public class Player
     {
         public long PlayerId { get; set; }
