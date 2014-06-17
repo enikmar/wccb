@@ -338,7 +338,7 @@
     <Content Include="Areas\Administration\Views\Player\Edit.cshtml" />
     <Content Include="Areas\Administration\Views\Player\Delete.cshtml" />
     <Content Include="Areas\Administration\Views\Home\Index.cshtml" />
-    <None Include="Properties\PublishProfiles\Release.pubxml" />
+    <None Include="Properties\PublishProfiles\Release - E Drive.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\conductor2014.jpg" />
     <Content Include="Images\profile-default.png" />
