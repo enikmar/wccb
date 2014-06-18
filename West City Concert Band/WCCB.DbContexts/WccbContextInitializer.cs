@@ -7,7 +7,7 @@ using WCCB.Models;
 
 namespace WCCB.DbContexts
 {
-    public class WccbContextInitializer : DropCreateDatabaseIfModelChanges<WccbContext>
+    public class WccbContextInitializer : DropCreateDatabaseAlways<WccbContext>
     {
         public WccbContextInitializer()
         {

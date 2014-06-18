@@ -426,6 +426,10 @@
       <Project>{5fd011d1-092d-48ae-80ef-d84ec16270d1}</Project>
       <Name>WCCB.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WCCB.Providers\WCCB.Providers.csproj">
+      <Project>{506441fa-aa41-4e3b-b8f0-0527f72ae877}</Project>
+      <Name>WCCB.Providers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WCCB.Repositories\WCCB.Repositories.csproj">
       <Project>{EF448569-6CD4-49AB-A632-D09880F159B7}</Project>
       <Name>WCCB.Repositories</Name>
