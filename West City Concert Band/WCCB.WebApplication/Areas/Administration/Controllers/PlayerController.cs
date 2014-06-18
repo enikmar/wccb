@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
-using WCCB.DataLayer.Repositories;
-using WCCB.DataLayer.Repositories.Interfaces;
 using WCCB.Models;
+using WCCB.Repositories;
+using WCCB.Repositories.Interfaces;
 using WCCB.WebApplication.Controllers;
 
 namespace WCCB.WebApplication.Areas.Administration.Controllers

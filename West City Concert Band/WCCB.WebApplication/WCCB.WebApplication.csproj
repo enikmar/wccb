@@ -41,7 +41,7 @@
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Kendo.Mvc, Version=2014.1.603.440, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -414,6 +414,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WCCB.DbContexts\WCCB.DbContexts.csproj">
+      <Project>{57216F4C-70F6-451E-B156-86632CCCAD72}</Project>
+      <Name>WCCB.DbContexts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WCCB.Helpers\WCCB.Helpers.csproj">
       <Project>{4567A9E8-F187-4A59-AE32-0AF24CEF64D6}</Project>
       <Name>WCCB.Helpers</Name>
@@ -421,6 +425,10 @@
     <ProjectReference Include="..\WCCB.Models\WCCB.Models.csproj">
       <Project>{5fd011d1-092d-48ae-80ef-d84ec16270d1}</Project>
       <Name>WCCB.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WCCB.Repositories\WCCB.Repositories.csproj">
+      <Project>{EF448569-6CD4-49AB-A632-D09880F159B7}</Project>
+      <Name>WCCB.Repositories</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

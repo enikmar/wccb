@@ -2,12 +2,10 @@
 using System.Linq;
 using System.Web.Helpers;
 using System.Web.Mvc;
-using WCCB.DataLayer.DbContexts;
-using WCCB.DataLayer.Providers;
-using WCCB.DataLayer.Repositories;
-using WCCB.DataLayer.Repositories.Interfaces;
 using WCCB.Helpers;
 using WCCB.Models;
+using WCCB.Repositories;
+using WCCB.Repositories.Interfaces;
 using WCCB.WebApplication.Models;
 using WebMatrix.WebData;
 

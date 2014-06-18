@@ -7,10 +7,9 @@ using System.Web;
 using System.Web.Mvc;
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
-using WCCB.DataLayer.Repositories;
-using WCCB.DataLayer.Repositories.Interfaces;
 using WCCB.Models;
-using WCCB.DataLayer.DbContexts;
+using WCCB.Repositories;
+using WCCB.Repositories.Interfaces;
 using WCCB.WebApplication.Areas.Administration.Models;
 using WCCB.WebApplication.Controllers;
 

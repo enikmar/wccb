@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
-using WCCB.DataLayer.Repositories;
+using WCCB.Repositories;
+
 
 namespace WCCB.WebApplication.Controllers
 {
