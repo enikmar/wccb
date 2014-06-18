@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
 using WCCB.Models;
 
-namespace WCCB.DataLayer
+namespace WCCB.DbContexts
 {
     public class WccbContext : DbContext
     {

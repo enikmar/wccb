@@ -4,10 +4,10 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using WCCB.DataLayer.DbContexts;
-using WCCB.DataLayer.Repositories.Interfaces;
+using WCCB.DbContexts;
+using WCCB.Repositories.Interfaces;
 
-namespace WCCB.DataLayer.Repositories
+namespace WCCB.Repositories
 {
     public abstract class GenericRepository<T> : IGenericRepository<T>
         where T : class

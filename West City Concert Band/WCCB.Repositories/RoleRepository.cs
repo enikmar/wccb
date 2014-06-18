@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using WCCB.DataLayer.DbContexts;
-using WCCB.DataLayer.Repositories.Interfaces;
 using WCCB.Models;
+using WCCB.Repositories.Interfaces;
 
-namespace WCCB.DataLayer.Repositories
+namespace WCCB.Repositories
 {
     public class RoleRepository : GenericRepository<Role>, IRoleRepository
     {

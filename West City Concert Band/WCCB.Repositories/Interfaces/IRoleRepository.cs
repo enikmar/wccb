@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WCCB.Models;
 
-namespace WCCB.DataLayer.Repositories.Interfaces
+namespace WCCB.Repositories.Interfaces
 {
     public interface IRoleRepository : IGenericRepository<Role>
     {
