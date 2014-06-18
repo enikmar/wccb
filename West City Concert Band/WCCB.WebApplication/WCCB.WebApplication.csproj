@@ -414,10 +414,6 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WCCB.DataLayer\WCCB.DataLayer.csproj">
-      <Project>{a172a852-87ca-4b2c-8b73-7a30690639cb}</Project>
-      <Name>WCCB.DataLayer</Name>
-    </ProjectReference>
     <ProjectReference Include="..\WCCB.Helpers\WCCB.Helpers.csproj">
       <Project>{4567A9E8-F187-4A59-AE32-0AF24CEF64D6}</Project>
       <Name>WCCB.Helpers</Name>
